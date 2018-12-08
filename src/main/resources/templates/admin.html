@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="societyApp">
+<head>
+<meta charset="UTF-8" />
+
+<title>Quero Evento - Admin</title>
+<link href="images/ico.ico" rel="shortcut icon" />
+
+<script src="lib/js/jquery-3.2.1.min.js"></script>
+<script src="lib/js/angular.js"></script>
+<script src="lib/js/angular-route.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/configs/interceptorConfig.js"></script>
+<script src="js/configs/routeConfigAdmin.js"></script>
+<script src="js/configs/baseUrl.js"></script>
+
+<script src="js/interceptors/tokenInterceptor.js"></script>
+
+<script src="js/controllers/login/loginCtrl.js"></script>
+<script src="js/controllers/event/adminEventCtrl.js"></script>
+<script src="js/controllers/event/adminEditEventCtrl.js"></script>
+<script src="js/controllers/category/categoryModeratorCtrl.js"></script>
+<script src="js/controllers/event/index/eventByCompanyCtrl.js"></script>
+
+<script src="js/services/societyAPIService.js"></script>
+<script src="js/services/eventAPIService.js"></script>
+<script src="js/services/loginAPIService.js"></script>
+<script src="js/services/agendamentoAPIService.js"></script>
+
+
+<link rel="stylesheet" href="lib/css/styles.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+</head>
+<body ng-controller="loginCtrl">
+
+	<div ng-include="'views/admin/navbar.html'"></div>
+
+	<br/>
+
+	<div class="col s12 container">
+		<div ng-include="'views/admin/home.html'"></div>
+	</div>
+
+	<div class="col s12 container" ng-controller="adminEventCtrl">
+		<ng-view></ng-view>
+	</div>
+
+</body>
+</html>
