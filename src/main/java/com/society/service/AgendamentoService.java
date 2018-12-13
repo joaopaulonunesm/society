@@ -1,5 +1,6 @@
 package com.society.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.society.exception.BusinessException;
 import com.society.model.Agendamento;
-import com.society.model.DataVO;
 import com.society.model.Society;
 import com.society.repository.AgendamentoRepository;
 import com.society.utils.Utils;
@@ -27,6 +27,10 @@ public class AgendamentoService {
 
 	public Agendamento salvar(Agendamento agendamento) throws BusinessException {
 
+		if(agendamento.getDataInicio().before(new Date())) {
+			throw new BusinessException("A data informada deve ser maior que a data atual.");
+		}
+		
 		Society society = societyService.buscarPorId(agendamento.getSociety().getId());
 
 		agendamento.setSociety(society);
@@ -34,8 +38,8 @@ public class AgendamentoService {
 
 		List<Agendamento> agendamentoExistente = buscarHorarioExistentePorDataESociety(agendamento, society.getId());
 
-		if (!agendamentoExistente.isEmpty()) {
-			throw new BusinessException("Já existe um jogo agendado no society " + society.getNome() + " para o horário informado.");
+		if (!agendamentoExistente.isEmpty() && agendamentoExistente.size() >= society.getQuantidadeCampos()) {
+			throw new BusinessException("Não existe campo disponível no society " + society.getNome() + " para o horário informado.");
 		}
 		
 		societyService.addQntJogo(society);
@@ -72,9 +76,8 @@ public class AgendamentoService {
 		return busca.get();
 	}
 
-	public List<Agendamento> buscaHorariosOcupadosPorSociety(Long id, DataVO dataVO) {
-
-		return agendamentoRepository.findByDataAndSociety(id, dataVO.getData());
+	public List<Agendamento> buscarPorSociety(Long idSociety) {
+		return agendamentoRepository.findBySocietyIdOrderByDataInicio(idSociety);
 	}
 
 }

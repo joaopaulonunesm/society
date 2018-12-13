@@ -1,75 +1,19 @@
 <meta charset="UTF-8" />
-<nav >
-    <div class="nav-wrapper white">
-        <div class="container">
-            <a href="#/" class="brand-logo"><img style="margin-top: 15px" src="images/navlogo.png" alt="Logo"></a>
-            <ul class="right hide-on-med-and-down">
-                <li ng-if="login.company.moderator == true">
-                    <a class="font-bold" href="/moderator">
-                        MODERATOR
-                    </a>
-                </li>
-                <li>
-                    <a class="btn red waves-effect waves-light" href="#/" id="button-collapse" data-activates="slide-out" data-sidenav="left" data-menuwidth="300" data-closeonclick="false">
-                        Menu
-                    </a>
-                </li>
-            </ul>
-            <a href="#/" id="button-collapse" data-closeonclick="false" data-activates="slide-out" data-sidenav="left" data-menuwidth="300">
-                <i class="material-icons">menu</i>
-            </a>
-        </div>
-    </div>
-</nav>
 
-<ul id="slide-out" class="side-nav full">
-    <ul collapsible collapsible-accordion>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#/"><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/S-Bahn-Logo.svg/220px-S-Bahn-Logo.svg.png" width="40" height="40" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <a href="/"><li class="logo center-align">
-        	<img style="margin-top: 15px" src="images/navlogo.png" alt="Logo">
-        </li></a>
-
-        <li class="bold active">
-            <a href="#/" class="collapsible-header active waves-effect waves-red">
-                HOME
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="bold active">
-            <a class="collapsible-header active wavess-effect waves-red">
-                EVENTOS
-            </a>
-            <div class="collapsible-body" style="display: block;">
-                <ul>
-                    <li><a href="#/event/insert">NOVO EVENTO</a></li>
-                    <li><a href="#/event/list">MEUS EVENTOS</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="bold">
-            <a href="#/settings" class="collapsible-header active waves-effect waves-red">
-                CONFIGURAÇÕES
-            </a>
-        </li>
-        <li ng-if="login.company.moderator == true" class="divider"></li>
-        <li class="bold" ng-if="login.company.moderator == true">
-	        <a href="/moderator" class="collapsible-header active waves-effect waves-red">
-	       		MODERATOR
-	        </a>
-        </li>
-        <li class="divider"></li>
-        <li class="bold">
-            <a ng-href="/#/" class="collapsible-header active waves-effect waves-red">
-                VOLTAR AO QUERO EVENTO
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="bold">
-            <a href="" ng-click="logout()" class="collapsible-header active waves-effect waves-red">
-                SAIR
-            </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <a class="nav-link" href="#/">Home <span class="sr-only">(current)</span></a>
         </li>
     </ul>
-</ul>
-
-
+    <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="sair()">Sair</button>
+    </form>
+    </div>
+</nav>

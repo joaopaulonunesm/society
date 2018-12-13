@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Society {
-	
+
 	@Id
 	@SequenceGenerator(name = "SOCIETYSEQ", sequenceName = "SOCIETY_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SOCIETYSEQ")
@@ -18,8 +18,11 @@ public class Society {
 	private String nome;
 	@Column(nullable = false)
 	private String nomeUrl;
+	private String descricao;
 	@Column(nullable = false)
 	private Double valorHora;
+	@Column(nullable = false)
+	private String nomeResponsavel;
 	@Column(nullable = false)
 	private Long celular;
 	private Long telefone;
@@ -28,8 +31,11 @@ public class Society {
 	private String endereco;
 	private Integer cep;
 	private String observacao;
+	@Column(nullable = false)
 	private String urlFoto;
-	private Long qntJogos;
+	private Long quantidadeJogos;
+	@Column(nullable = false)
+	private Integer quantidadeCampos;
 
 	public Long getId() {
 		return id;
@@ -59,12 +65,28 @@ public class Society {
 				.replace('ñ', 'n').replace('Ñ', 'N').toLowerCase();
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public Double getValorHora() {
 		return valorHora;
 	}
 
 	public void setValorHora(Double valorHora) {
 		this.valorHora = valorHora;
+	}
+
+	public String getNomeResponsavel() {
+		return nomeResponsavel;
+	}
+
+	public void setNomeResponsavel(String nomeResponsavel) {
+		this.nomeResponsavel = nomeResponsavel;
 	}
 
 	public Long getCelular() {
@@ -123,12 +145,20 @@ public class Society {
 		this.urlFoto = urlFoto;
 	}
 
-	public Long getQntJogos() {
-		return qntJogos;
+	public Long getQuantidadeJogos() {
+		return quantidadeJogos;
 	}
 
-	public void setQntJogos(Long qntJogos) {
-		this.qntJogos = qntJogos;
+	public void setQuantidadeJogos(Long quantidadeJogos) {
+		this.quantidadeJogos = quantidadeJogos;
+	}
+
+	public Integer getQuantidadeCampos() {
+		return quantidadeCampos;
+	}
+
+	public void setQuantidadeCampos(Integer quantidadeCampos) {
+		this.quantidadeCampos = quantidadeCampos;
 	}
 
 }

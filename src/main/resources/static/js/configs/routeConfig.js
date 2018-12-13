@@ -9,8 +9,8 @@ angular.module("societyApp").config(function ($routeProvider) {
 		controller: "agendamentoController"
 	});
 
-	$routeProvider.when("/login", {
-		templateUrl: "views/index/login.html"
+	$routeProvider.when("/society/cadastro", {
+		templateUrl: "views/index/society-cadastro.html"
 	});
 		
 	$routeProvider.otherwise({redirectTo: "/"});

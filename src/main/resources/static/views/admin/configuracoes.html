@@ -1,0 +1,127 @@
+<div class="container-fluid">
+        <div class="row">
+
+                <div ng-include="'views/admin/component/sidebar.html'"></div>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Configurações</h1>
+                        </div>
+
+                        <h4 class="mb-3">Informações do Society</h4>
+
+                        <form class="needs-validation" novalidate>
+                
+                                <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                                <label for="nome">Nome do Society</label>
+                                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="society.nome" required />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um nome.
+                                                </div>
+                                        </div>
+                                </div>
+                
+                                <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                                <label for="descricao">Descrição</label>
+                                                <textarea rows="3" type="text" class="form-control" id="descricao" ng-model="society.descricao"/>
+                                        </div>
+                                </div>  
+                
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="valorHora">Valor por Hora</label>
+                                                <input type="text" class="form-control" id="valorHora" ng-model="society.valorHora" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um valor por hora.
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="observacao">Observação <span class="text-muted">(Opcional)</span></label>
+                                                <input type="text" class="form-control" id="observacao" required ng-model="society.observacao" />
+                                        </div>
+                                </div>
+                                
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="urlFoto">Url da Foto</label>
+                                                <input type="text" class="form-control" id="urlFoto" ng-model="society.urlFoto" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira uma url de foto.
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="quantidadeCampos">Quantidade de Campos</label>
+                                                <input type="number" class="form-control" id="quantidadeCampos" required ng-model="society.quantidadeCampos" />
+                                        </div>
+                                </div>
+                
+                                <hr class="mb-4">
+                
+                                <h4 class="mb-3">Contato</h4>
+                
+                                <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                                <label for="nomeResponsavel">Nome do responsável</label>
+                                                <input type="text" class="form-control" id="nomeResponsavel" placeholder="" value="" ng-model="society.nomeResponsavel;" required />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um nome de responsável.
+                                                </div>
+                                        </div>
+                                </div>
+                
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="telefone">Telefone Residencial <span class="text-muted">(Opcional)</span></label>
+                                                <input type="text" class="form-control" id="telefone" ng-model="society.telefone" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um telefone valido.
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="celular">Celular</label>
+                                                <input type="text" class="form-control" id="celular" required ng-model="society.celular" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um celular valido.
+                                                </div>
+                                        </div>
+                                </div>
+                
+                                <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                                <label for="email">Email <span class="text-muted">(Opcional)</span></label>
+                                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="society.email" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um email valido.
+                                                </div>
+                                        </div>
+                                </div>
+                
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="endereco">Endereço</label>
+                                                <input type="text" class="form-control" id="endereco" ng-model="society.endereco" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um endereço valido.
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="cep">CEP</label>
+                                                <input type="text" class="form-control" id="cep" required ng-model="society.cep" />
+                                                <div class="invalid-feedback">
+                                                        Por favor insira um cep valido.
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <hr class="mb-4">
+                
+                                <button class="btn btn-success" style="float:right" ng-click="alterarInformacoes(1)">SALVAR</button>
+                        </form>
+
+                </main>
+
+        </div>
+</div>

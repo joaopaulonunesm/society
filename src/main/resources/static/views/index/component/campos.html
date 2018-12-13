@@ -1,35 +1,40 @@
-<hr class="featurette-divider">
-
-<div class="row featurette">
-        <div class="col-md-7">
-                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1676143db3a%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1676143db3a%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.125%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+<div class="row">
+        <div class="col-md-12">
+                <label for="busca"><h3 class="mb-3">Encontre o seu society favorito</h3></label>
+                <input  class="form-control" id="busca" type="text" placeholder="Digite o nome do society" ng-model="busca">
         </div>
 </div>
 
 <hr class="featurette-divider">
 
-<div class="row featurette">
-        <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1676143db3d%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1676143db3d%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.125%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 500px; height: 500px;">
-        </div>
-</div>
+<div ng-repeat="society in societies | limitTo: 10 | filter: busca">
 
-<hr class="featurette-divider">
+        <div class="row">
+                <div class="col-md-7">
+                        <h3 class="mb-3">{{society.nome}}</h3>
+                        <p ng-if="society.descricao != null" class="lead">{{society.descricao}}</p>
+                        <br/>
+                        <h5><span class="text-muted">Informações do Society</span></h5>
+                        <p class="lead">Valor por hora: R${{society.valorHora}}</p>
+                        <p class="lead">Quantidade de campos disponíveis: {{society.quantidadeCampos}}</p>
+                        <p ng-if="society.observacao != null" class="lead">Observação: {{society.observacao}}</p>
+                        <p class="lead">Quantidade de jogos realizados pelo site: {{society.quantidadeJogos}}</p>
+                        <br/>
+                        <h5><span class="text-muted">Contato</span></h5>
+                        <p class="lead">Nome do responsável: {{society.nomeResponsavel}}</p>
+                        <p class="lead">Celular: {{society.celular}}</p>
+                        <p ng-if="society.telefone != null" class="lead">Telefone Residencial: {{society.telefone}}</p>
+                        <p ng-if="society.email != null" class="lead">Email: {{society.email}}</p>
+                        <p class="lead">Endereço: {{society.endereco}}</p>
+                        <p ng-if="society.cep != null" class="lead">CEP: {{society.cep}}</p>
+                        <br/>    
+                        <a class="btn btn-success" ng-controller="agendamentoController" ng-click="adicionarSocietyLocalStage(society)" href="#/agendar-jogo">Agendar</a>
+                </div>
+                <div class="col-md-5">
+                        <img class="featurette-image img-fluid mx-auto"  ng-src="{{society.urlFoto}}" />
+                </div>
+        </div>
 
-<div class="row featurette">
-        <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1676143db3f%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1676143db3f%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.125%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 500px; height: 500px;">
-        </div>
+        <hr class="featurette-divider">
+
 </div>

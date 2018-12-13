@@ -1,34 +1,13 @@
-<meta charset="UTF-8" />
+<div class="container-fluid">
+        <div class="row">
 
-<div class="row font-bold">
+                <div ng-include="'views/admin/component/sidebar.html'"></div>
 
-	<div class="col s3">
-		<a href="#/event/insert">
-			<div class="card-panel center-align hoverable red white-text font-bold">
-				NOVO EVENTO
-			</div>
-		</a>
-	</div>
-	<div class="col s3">
-		<a href="#/event/list">
-			<div class="card-panel center-align hoverable red white-text font-bold">
-				EVENTOS
-			</div>
-		</a>
-	</div>
-	<div class="col s3">
-		<a href="#/offer">
-			<div class="card-panel center-align hoverable red white-text font-bold">
-				OFERTAS
-			</div>
-		</a>
-	</div>
-	<div class="col s3">
-		<a href="#/settings">
-			<div class="card-panel center-align hoverable red white-text font-bold">
-				CONFIGURAÇÕES
-			</div>
-		</a>
-	</div>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
+                        <div ng-include="'views/admin/component/dashboard.html'"></div>
+
+                </main>
+
+        </div>
 </div>

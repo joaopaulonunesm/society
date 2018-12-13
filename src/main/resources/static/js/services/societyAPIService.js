@@ -21,7 +21,7 @@ angular.module("societyApp").factory("societyAPI", function ($http, configs){
 	}
 
 	var _buscarPorNomeUrl = function (nomeUrl){
-		return $http.get(configs.baseUrl + '/society/' + nomeUrl);
+		return $http.get(configs.baseUrl + '/society/nome/' + nomeUrl);
 	}
 
 	return {

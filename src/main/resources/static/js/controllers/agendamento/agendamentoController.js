@@ -1,10 +1,8 @@
-angular.module("societyApp").controller("agendamentoController", function ($scope, $location, agendamentoAPI, societyAPI, configs) {
+angular.module("societyApp").controller("agendamentoController", function ($scope, $location, agendamentoAPI, configs) {
     
     $scope.agendamento = {};
 
     $scope.dataAgendamento = {};
-
-    $scope.societies = [];
 
     $scope.agendar = function() {
 
@@ -34,20 +32,6 @@ angular.module("societyApp").controller("agendamentoController", function ($scop
 		return dateFormated; 
     };
 
-    $scope.buscarSocities = function () {
-
-        societyAPI.buscarTodos().then(function(response) {
-
-            $scope.societies = response.data;
-
-		}, function(response) {
-            // erro
-		});
-
-    };
-
-    $scope.buscarSocities();
-
     $scope.preencherCamposSociety = function (idSociety) {
 
         var society =  $scope.societies.filter(function(society) {
@@ -63,5 +47,20 @@ angular.module("societyApp").controller("agendamentoController", function ($scop
         $scope.agendamento.society.cep = society[0].cep;
 
     };
+
+    $scope.adicionarSocietyLocalStage = function(society) {
+
+        localStorage.setItem("society", JSON.stringify(society));
+    }
+
+    $scope.carregarPaginaComSociety = function() {
+
+        $scope.agendamento.society = JSON.parse(localStorage.getItem("society"));
+
+        localStorage.removeItem("society");
+
+    };
+
+    $scope.carregarPaginaComSociety();
 
 });

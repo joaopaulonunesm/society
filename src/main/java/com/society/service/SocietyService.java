@@ -19,7 +19,7 @@ public class SocietyService {
 	public Society salvar(Society society) {
 
 		society.setNomeUrl(society.getNome());
-		society.setQntJogos(0l);
+		society.setQuantidadeJogos(society.getQuantidadeJogos() == null ? 0l : society.getQuantidadeJogos());
 
 		return societyRepository.save(society);
 	}
@@ -63,7 +63,7 @@ public class SocietyService {
 	}
 
 	public void addQntJogo(Society society) {
-		society.setQntJogos(society.getQntJogos() + 1);
+		society.setQuantidadeJogos(society.getQuantidadeJogos() + 1);
 		salvar(society);
 	}
 

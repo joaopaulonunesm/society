@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+</div>
+
+<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+{{dataVO}}
+
+<h2>Jogos de hoje</h2>
+<div class="table-responsive" style="margin-top: 10px">
+        <table class="table table-striped table-sm">
+                <thead>
+                        <tr>
+                        <th>Nome</th>
+                        <th>Celular</th>
+                        <th>Inicio</th>
+                        <th>Fim</th>
+                        <th>Observação</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="agendamento in agendamentos">
+                                <td>{{agendamento.nomeResponsavel}}</td>
+                                <td>{{agendamento.celular}}</td>
+                                <td>{{agendamento.dataInicio | date:'dd/MM/yyyy  hh:mm'}}</td>
+                                <td>{{agendamento.dataFim | date:'dd/MM/yyyy  hh:mm'}}</td>
+                                <td>{{agendamento.observacao}}</td>
+                        </tr>
+                </tbody>
+        </table>
+</div>
+
+
+
+<script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                        labels: ["Janeiro", "Fevereiro", "Março", "Maio", "Abril", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                        datasets: [{
+                        data: [55, 47, 30, 75, 12, 72, 96, 70, 84, 53, 31, 11],
+                        lineTension: 0,
+                        backgroundColor: 'transparent',
+                        borderColor: '#007bff',
+                        borderWidth: 4,
+                        pointBackgroundColor: '#007bff'
+                        }]
+                },
+                options: {
+                        scales: {
+                        yAxes: [{
+                        ticks: {
+                                beginAtZero: false
+                        }
+                        }]
+                        },
+                        legend: {
+                        display: false,
+                        }
+                }
+        });
+</script>

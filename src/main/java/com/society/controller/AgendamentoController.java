@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.society.exception.BusinessException;
 import com.society.model.Agendamento;
-import com.society.model.DataVO;
 import com.society.service.AgendamentoService;
 
 @Controller
@@ -53,15 +52,15 @@ public class AgendamentoController {
 		return new ResponseEntity<>(agendamentoService.buscarTodos(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/horarios-reservados/{id}")
-	public ResponseEntity<List<Agendamento>> buscarHorariosReservados(@PathVariable Long id, @RequestBody DataVO dataVO) {
-
-		return new ResponseEntity<>(agendamentoService.buscaHorariosOcupadosPorSociety(id, dataVO), HttpStatus.OK);
-	}
-
 	@GetMapping("/{id}")
 	public ResponseEntity<Agendamento> buscarPorId(@PathVariable Long id) throws BusinessException {
 
 		return new ResponseEntity<>(agendamentoService.buscarPorId(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/society/{idSociety}")
+	public ResponseEntity<List<Agendamento>> buscarPorSociety(@PathVariable Long idSociety) {
+
+		return new ResponseEntity<>(agendamentoService.buscarPorSociety(idSociety), HttpStatus.OK);
 	}
 }

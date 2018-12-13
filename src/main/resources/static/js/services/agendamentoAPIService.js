@@ -20,8 +20,12 @@ angular.module("societyApp").factory("agendamentoAPI", function ($http, configs)
 		return $http.get(configs.baseUrl + '/agendamentos/' + id);
 	}
 
-	var _buscarHorariosReservados = function (id, dataVO){
-		return $http.get(configs.baseUrl + '/agendamentos/horarios-reservados/' + id, dataVO);
+	var _buscarHorariosReservados = function (dataVO){
+		return $http.get(configs.baseUrl + '/agendamentos/horarios-reservados', dataVO);
+	}
+
+	var _buscarPorSociety = function (idSociety){
+		return $http.get(configs.baseUrl + '/agendamentos/society/' + idSociety);
 	}
 
 	return {
@@ -30,7 +34,8 @@ angular.module("societyApp").factory("agendamentoAPI", function ($http, configs)
 		deletar: _deletar,
 		buscarTodos: _buscarTodos,
 		buscarPorId: _buscarPorId,
-		buscarHorariosReservados: _buscarHorariosReservados
+		buscarHorariosReservados: _buscarHorariosReservados,
+		buscarPorSociety: _buscarPorSociety
     };
 	
 	
