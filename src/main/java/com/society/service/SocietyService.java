@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.society.enums.StatusSociety;
 import com.society.exception.BusinessException;
 import com.society.model.Society;
 import com.society.repository.SocietyRepository;
@@ -15,25 +17,32 @@ public class SocietyService {
 
 	@Autowired
 	private SocietyRepository societyRepository;
+	
+	@Autowired
+	private LoginService loginService;
 
-	public Society salvar(Society society) {
-
+	public Society criar(Society society) {
+		
 		society.setNomeUrl(society.getNome());
-		society.setQuantidadeJogos(society.getQuantidadeJogos() == null ? 0l : society.getQuantidadeJogos());
+		society.setQuantidadeJogos(0l);
+		society.setStatusSociety(StatusSociety.EM_ANALISE);
+		
+		society.setLogin(loginService.completarLogin(society.getLogin()));
 
 		return societyRepository.save(society);
 	}
 
-	public Society alterar(Long id, Society society) throws BusinessException {
+	public Society alterar(String token, Society society) throws BusinessException {
 
-		society.setId(buscarPorId(id).getId());
+		Society societyExistente = buscarPorToken(token);
+		
+		society.setId(societyExistente.getId());
+		society.setStatusSociety(societyExistente.getStatusSociety());
 		society.setNomeUrl(society.getNome());
-
-		return salvar(society);
-	}
-
-	public void deletar(Long id) throws BusinessException {
-		societyRepository.delete(buscarPorId(id));
+		
+		society.setLogin(loginService.manterDados(societyExistente.getLogin(), society.getLogin()));
+		
+		return societyRepository.save(society);
 	}
 
 	public List<Society> buscarTodos() {
@@ -45,7 +54,7 @@ public class SocietyService {
 		Optional<Society> busca = societyRepository.findById(id);
 
 		if (!busca.isPresent()) {
-			throw new BusinessException("Não foi encontrado Society pelo ID");
+			throw new BusinessException("Não foi encontrado Society pelo ID", HttpStatus.NOT_FOUND);
 		}
 
 		return busca.get();
@@ -56,15 +65,34 @@ public class SocietyService {
 		Optional<Society> busca = societyRepository.findByNomeUrl(nomeUrl);
 
 		if (!busca.isPresent()) {
-			throw new BusinessException("Não foi encontrado Society pelo Nome Url");
+			throw new BusinessException("Não foi encontrado Society pelo Nome Url", HttpStatus.NOT_FOUND);
 		}
 
 		return busca.get();
 	}
+	
+	public Society buscarPorToken(String token) throws BusinessException {
+		
+		return societyRepository.findByLoginId(loginService.buscarPorToken(token).getId());
+	}
 
-	public void addQntJogo(Society society) {
+	public void addQntJogo(Society society) throws BusinessException {
+		society = buscarPorId(society.getId());
 		society.setQuantidadeJogos(society.getQuantidadeJogos() + 1);
-		salvar(society);
+		societyRepository.save(society);
+	}
+
+	public Society ativarOuInativar(Long id, String confirmacao) throws BusinessException {
+
+		if(!confirmacao.equalsIgnoreCase(StatusSociety.ATIVO.toString()) || !confirmacao.equalsIgnoreCase(StatusSociety.INATIVO.toString())) {
+			throw new BusinessException("Parametro " + confirmacao + " é inválido para Ativação ou Inativação!", HttpStatus.BAD_REQUEST);
+		}
+		
+		Society society = buscarPorId(id);
+		
+		society.setStatusSociety(StatusSociety.getPorString(confirmacao));
+		
+		return societyRepository.save(society);
 	}
 
 }

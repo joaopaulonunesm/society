@@ -12,4 +12,6 @@ public interface SocietyRepository extends JpaRepository<Society, Long> {
 
 	public Optional<Society> findByNomeUrl(String nomeUrl);
 
+	public Society findByLoginId(Long id);
+
 }

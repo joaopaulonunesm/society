@@ -4,7 +4,7 @@ angular.module("societyApp").config(function ($routeProvider) {
 		templateUrl: "views/index/home.html"
 	});
 
-	$routeProvider.when("/agendar-jogo", {
+	$routeProvider.when("/agendar-jogo/:nomeUrl", {
 		templateUrl: "views/index/agendar-jogo.html",
 		controller: "agendamentoController"
 	});

@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.society.enums.StatusAgendamento;
+
 @Entity
 public class Agendamento {
 
@@ -36,6 +38,7 @@ public class Agendamento {
 	@Column(nullable = false)
 	private Date dataFim;
 	private String observacao;
+	private StatusAgendamento status;
 
 	public Long getId() {
 		return id;
@@ -107,6 +110,14 @@ public class Agendamento {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public StatusAgendamento getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusAgendamento status) {
+		this.status = status;
 	}
 
 }

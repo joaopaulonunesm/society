@@ -1,4 +1,4 @@
-angular.module("societyApp").factory("tokenInterceptor", function($q, $location){
+angular.module("societyApp").factory("tokenInterceptor", function($q, configs){
 
 	return {
 
@@ -14,10 +14,11 @@ angular.module("societyApp").factory("tokenInterceptor", function($q, $location)
 			
 			if(rejection.status == 401){
 				localStorage.removeItem("token");
+				$(location).attr('href', configs.siteUrl + '/login');
 			}
 
 			if(rejection.status < 0){
-				$location.path("/connectionrefused");
+				$(location).attr('href', configs.siteUrl + '/login');
 			}
 
 			return $q.reject(rejection);

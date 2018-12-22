@@ -5,36 +5,27 @@
         </div>
 </div>
 
-<hr class="featurette-divider">
+<br/>
 
-<div ng-repeat="society in societies | limitTo: 10 | filter: busca">
+<div ng-repeat="society in societies | filter: busca | limitTo: 10 ">
 
-        <div class="row">
-                <div class="col-md-7">
-                        <h3 class="mb-3">{{society.nome}}</h3>
-                        <p ng-if="society.descricao != null" class="lead">{{society.descricao}}</p>
-                        <br/>
-                        <h5><span class="text-muted">Informações do Society</span></h5>
-                        <p class="lead">Valor por hora: R${{society.valorHora}}</p>
-                        <p class="lead">Quantidade de campos disponíveis: {{society.quantidadeCampos}}</p>
-                        <p ng-if="society.observacao != null" class="lead">Observação: {{society.observacao}}</p>
-                        <p class="lead">Quantidade de jogos realizados pelo site: {{society.quantidadeJogos}}</p>
-                        <br/>
-                        <h5><span class="text-muted">Contato</span></h5>
-                        <p class="lead">Nome do responsável: {{society.nomeResponsavel}}</p>
-                        <p class="lead">Celular: {{society.celular}}</p>
-                        <p ng-if="society.telefone != null" class="lead">Telefone Residencial: {{society.telefone}}</p>
-                        <p ng-if="society.email != null" class="lead">Email: {{society.email}}</p>
-                        <p class="lead">Endereço: {{society.endereco}}</p>
-                        <p ng-if="society.cep != null" class="lead">CEP: {{society.cep}}</p>
-                        <br/>    
-                        <a class="btn btn-success" ng-controller="agendamentoController" ng-click="adicionarSocietyLocalStage(society)" href="#/agendar-jogo">Agendar</a>
-                </div>
-                <div class="col-md-5">
-                        <img class="featurette-image img-fluid mx-auto"  ng-src="{{society.urlFoto}}" />
+        <div class="card">
+                <div class="card-body">
+                        <div class="row">
+                                <div class="col-md-8">
+                                        <h3 class="card-title">{{society.nome}}</h3>
+                                        <p class="lead">{{society.descricao}}</p>
+                                        <p class="card-text">Contato: {{society.celular}}</p>
+                                        <p class="card-text">Valor por hora: R${{society.valorHora}}</p>
+                                        <p class="card-text">Endereço: {{society.endereco}}</p>
+                                        <a class="btn btn-success" ng-href="#/agendar-jogo/{{society.nomeUrl}}">Agendar</a>
+                                </div>        
+                                <div class="col-md-4">
+                                        <img class="featurette-image img-fluid mx-auto" height="236" width="236"  ng-src="{{society.urlFoto}}" />
+                                </div>        
+                        </div>
                 </div>
         </div>
 
-        <hr class="featurette-divider">
-
+        <br/>
 </div>

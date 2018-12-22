@@ -1,11 +1,33 @@
 <div class="container marketing">
 
-        <div class="py-5 text-center">
+        <div class="md-5 text-center" style="margin-top: 50px">
                 <h2>Agende seu Jogo</h2>
                 <p class="lead">Preencha o formulário para agendar o seu jogo.</p>
         </div>
+
+        <div class="card">
+                <div class="card-body">
+                        <div class="row">
+                                <div class="col-md-8">
+                                        <h3 class="card-title">{{agendamento.society.nome}}</h3>
+                                        <p ng-if="agendamento.society.descricao != null" class="lead">{{agendamento.society.descricao}}</p>
+                                        <p class="card-text">Valor por hora: R${{agendamento.society.valorHora}}</p>
+                                        <p ng-if="agendamento.society.observacao != null" class="card-text">Observação: {{agendamento.society.observacao}}</p>
+                                        <p class="card-text">Quantidade de campos: {{agendamento.society.quantidadeCampos}}</p>
+                                        <p class="card-text">Nome do responsável: {{agendamento.society.nomeResponsavel}}</p>
+                                        <p class="card-text">Celular: {{agendamento.society.celular}}</p>
+                                        <p ng-if="agendamento.society.telefone != null" class="card-text">Telefone: {{agendamento.society.telefone}}</p>
+                                        <p ng-if="agendamento.society.login.email != null" class="card-text">Email: {{agendamento.society.login.email}}</p>
+                                        <p class="card-text">Endereço: {{agendamento.society.endereco}}, CEP {{agendamento.society.cep}}</p>
+                                </div>        
+                                <div class="col-md-4">
+                                        <img class="featurette-image img-fluid mx-auto" height="236" width="236"  ng-src="{{agendamento.society.urlFoto}}" />
+                                </div>        
+                        </div>
+                </div>
+        </div>
                           
-        <h4 class="mb-3">Informações Pessoais</h4>
+        <h4 class="mb-3" style="margin-top: 15px">Informações Pessoais</h4>
 
         <form class="needs-validation" novalidate>
 
@@ -44,65 +66,6 @@
                                         Por favor insira um email valido.
                                 </div>
                         </div>
-                </div>
-
-                <hr class="mb-4">
-
-                <h4 class="mb-3">Informações do Society</h4>
-
-                <div class="mb-3">
-
-                        <label for="nomeSociety">Society</label>
-
-                        <select id="nomeSociety" ng-change="preencherCamposSociety(agendamento.society.id)" class="form-control" ng-model="agendamento.society.id">
-                                <option ng-repeat="society in societies" ng-value="society.id"> {{ society.nome }}</option>
-                        </select>
-                        <div class="invalid-feedback">
-                                Por favor escolha um society.
-                        </div>
-                </div>
-
-                <div class="row">
-                        <div class="col-md-6 mb-3">
-                                <label for="valorHora">Valor por hora</label>
-                                <div class="input-group">
-                                        <div class="input-group-prepend">
-                                                <span class="input-group-text">R$</span>
-                                        </div>
-                                        <input type="text" class="form-control" id="valorHora" ng-model="agendamento.society.valorHora" readonly />
-                                </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                                <label for="observacao">Observação</label>
-                                <input type="text" class="form-control" id="observacao" ng-model="agendamento.society.observacao"  readonly />
-                        </div>
-                </div>
-
-                <div class="row">
-                        <div class="col-md-6 mb-3">
-                                <label for="enderecoSociety">Endereço</label>
-                                <input type="text" class="form-control" id="enderecoSociety" ng-model="agendamento.society.endereco" readonly/>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                                <label for="cepSociety">CEP</label>
-                                <input type="text" class="form-control" id="cepSociety" ng-model="agendamento.society.cep" readonly/>
-                        </div>
-                </div>
-
-                <div class="row">
-                        <div class="col-md-6 mb-3">
-                                <label for="celularSociety">Celular</label>
-                                <input type="text" class="form-control" id="celularSociety" ng-model="agendamento.society.celular" readonly/>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                                <label for="telefoneSociety">Telefone</label>
-                                <input type="text" class="form-control" id="telefoneSociety" ng-model="agendamento.society.telefone" readonly/>
-                        </div>
-                </div>
-
-                <div class="mb-3">
-                        <label for="emailSociety">Email</label>
-                        <input type="email" class="form-control" id="emailSociety" ng-model="agendamento.society.email" readonly/>
                 </div>
 
                 <hr class="mb-4">

@@ -1,11 +1,17 @@
 package com.society.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.society.enums.StatusSociety;
 
 @Entity
 public class Society {
@@ -14,6 +20,9 @@ public class Society {
 	@SequenceGenerator(name = "SOCIETYSEQ", sequenceName = "SOCIETY_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SOCIETYSEQ")
 	private Long id;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_login")
+	private Login login;
 	@Column(nullable = false)
 	private String nome;
 	@Column(nullable = false)
@@ -26,9 +35,9 @@ public class Society {
 	@Column(nullable = false)
 	private Long celular;
 	private Long telefone;
-	private String email;
 	@Column(nullable = false)
 	private String endereco;
+	@Column(nullable = false)
 	private Integer cep;
 	private String observacao;
 	@Column(nullable = false)
@@ -36,6 +45,7 @@ public class Society {
 	private Long quantidadeJogos;
 	@Column(nullable = false)
 	private Integer quantidadeCampos;
+	private StatusSociety statusSociety;
 
 	public Long getId() {
 		return id;
@@ -43,6 +53,14 @@ public class Society {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 	public String getNome() {
@@ -105,14 +123,6 @@ public class Society {
 		this.telefone = telefone;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getEndereco() {
 		return endereco;
 	}
@@ -159,6 +169,14 @@ public class Society {
 
 	public void setQuantidadeCampos(Integer quantidadeCampos) {
 		this.quantidadeCampos = quantidadeCampos;
+	}
+
+	public StatusSociety getStatusSociety() {
+		return statusSociety;
+	}
+
+	public void setStatusSociety(StatusSociety statusSociety) {
+		this.statusSociety = statusSociety;
 	}
 
 }

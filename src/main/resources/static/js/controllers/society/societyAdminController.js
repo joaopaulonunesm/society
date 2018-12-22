@@ -2,18 +2,17 @@ angular.module("societyApp").controller("societyAdminController", function ($sco
     
     $scope.society = {};
 
-    $scope.buscarSociety = function (idSociety) {
+    $scope.buscarSociety = function () {
 
       if(localStorage.getItem("token")){
 
-            societyAPI.buscarPorId(idSociety).then(function(response) {
+            societyAPI.buscarPorToken().then(function(response) {
 
-            $scope.society = response.data;
+                  $scope.society = response.data.data;
       
             }, function(response) {
-            // erro
+                  alert(response.data.error);
             });
-            
 
       } else {
 
@@ -23,16 +22,16 @@ angular.module("societyApp").controller("societyAdminController", function ($sco
 
     };
 
-    $scope.buscarSociety(1);
+    $scope.buscarSociety();
 
-    $scope.alterarInformacoes = function(idSociety) {
+    $scope.alterarInformacoes = function() {
 
-		societyAPI.alterar(idSociety, $scope.society).then(function(response) {
+		societyAPI.alterar($scope.society).then(function(response) {
 
 			$location.path("/");
 
 		}, function(response) {
-            // erro
+                  alert(response.data.error);
 		});
     };
 

@@ -4,14 +4,16 @@ angular.module("societyApp").controller("societyController", function ($scope, $
 
     $scope.society = {};
 
+    $scope.login = {};
+
     $scope.buscarSocities = function () {
 
         societyAPI.buscarTodos().then(function(response) {
 
-            $scope.societies = response.data;
+            $scope.societies = response.data.data;
 
 		}, function(response) {
-            // erro
+                  alert(response.data.error);
 		});
 
     };
@@ -20,13 +22,15 @@ angular.module("societyApp").controller("societyController", function ($scope, $
 
     $scope.salvarSociety = function() {
 
-		societyAPI.salvar($scope.society).then(function(response) {
+        $scope.society.login = $scope.login;
+
+		societyAPI.criar($scope.society).then(function(response) {
 
 			$scope.society = {};
 			$location.path("/");
 
 		}, function(response) {
-            // erro
+                  alert(response.data.error);
 		});
     };
 

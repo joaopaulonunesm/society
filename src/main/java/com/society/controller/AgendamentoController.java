@@ -1,66 +1,80 @@
 package com.society.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.society.exception.BusinessException;
 import com.society.model.Agendamento;
+import com.society.model.vo.ResponseSocietyVO;
 import com.society.service.AgendamentoService;
 
 @Controller
-@RequestMapping("/agendamentos")
 public class AgendamentoController {
-
 	@Autowired
 	private AgendamentoService agendamentoService;
 
-	@PostMapping
-	public ResponseEntity<Agendamento> salvar(@RequestBody Agendamento agendamento) throws BusinessException {
+	@PostMapping("/agendamentos")
+	public ResponseEntity<ResponseSocietyVO> criar(@RequestBody Agendamento agendamento) {
 
-		return new ResponseEntity<>(agendamentoService.salvar(agendamento), HttpStatus.CREATED);
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.criar(agendamento)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Agendamento> alterar(@PathVariable Long id, @RequestBody Agendamento agendamento)
-			throws BusinessException {
+	@PutMapping("/agendamentos/{id}")
+	public ResponseEntity<ResponseSocietyVO> alterar(@PathVariable Long id, @RequestBody Agendamento agendamento) {
 
-		return new ResponseEntity<>(agendamentoService.alterar(id, agendamento), HttpStatus.OK);
-	}
-
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Agendamento> deletar(@PathVariable Long id) throws BusinessException {
-
-		agendamentoService.deletar(id);
-
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-
-	@GetMapping
-	public ResponseEntity<List<Agendamento>> buscarTodos() {
-
-		return new ResponseEntity<>(agendamentoService.buscarTodos(), HttpStatus.OK);
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.alterar(id, agendamento)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Agendamento> buscarPorId(@PathVariable Long id) throws BusinessException {
+	@PutMapping("/agendamentos/{id}/confirmacao/{confirmacao}")
+	public ResponseEntity<ResponseSocietyVO> confirmarOuCancelar(@PathVariable Long id, @PathVariable String confirmacao) {
 
-		return new ResponseEntity<>(agendamentoService.buscarPorId(id), HttpStatus.OK);
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.confirmarOuCancelar(id, confirmacao)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
+	}
+
+	@GetMapping("/agendamentos/{id}")
+	public ResponseEntity<ResponseSocietyVO> buscarPorId(@PathVariable Long id) {
+
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscarPorId(id)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
 	}
 	
-	@GetMapping("/society/{idSociety}")
-	public ResponseEntity<List<Agendamento>> buscarPorSociety(@PathVariable Long idSociety) {
+	@GetMapping("/agendamentos/society/{idSociety}")
+	public ResponseEntity<ResponseSocietyVO> buscarPorSociety(@PathVariable Long idSociety) {
 
-		return new ResponseEntity<>(agendamentoService.buscarPorSociety(idSociety), HttpStatus.OK);
+		return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscarPorSociety(idSociety)), HttpStatus.OK);
 	}
+	
+	@GetMapping("/v1/agendamentos/society")
+	public ResponseEntity<ResponseSocietyVO> buscaComTokenPorSociety(@RequestHeader(value = "Authorization") String token) {
+
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscaComTokenPorSociety(token)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
+	}
+	
 }

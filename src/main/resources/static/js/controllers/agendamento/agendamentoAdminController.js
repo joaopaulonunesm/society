@@ -1,19 +1,35 @@
-angular.module("societyApp").controller("agendamentoAdminController", function ($scope, $location, agendamentoAPI, configs) {
+angular.module("societyApp").controller("agendamentoAdminController", function ($scope, agendamentoAPI, $location) {
     
     $scope.agendamentos = [];
 
-    $scope.agendamentosPorSociety = function (idSociety) {
+    $scope.agendamentosPorSociety = function () {
 
-        agendamentoAPI.buscarPorSociety(idSociety).then(function(response) {
+        agendamentoAPI.buscarPorToken().then(function(response) {
 
-            $scope.agendamentos = response.data;
+            $scope.agendamentos = response.data.data;
 
 		}, function(response) {
-            // erro
+            if(response.status != 401){
+                alert(response.data.error);
+            }
 		});
 
     };
 
-    $scope.agendamentosPorSociety(1);
+    $scope.agendamentosPorSociety();
+
+    $scope.confirmarOuCancelar = function (id, confirmacao) {
+
+        agendamentoAPI.confirmarOuCancelar(id, confirmacao).then(function(response) {
+
+            $location.path("/agendamentos");
+
+		}, function(response) {
+            if(response.status != 401){
+                alert(response.data.error);
+            }
+		});
+
+    };
 
 });
