@@ -31,6 +31,13 @@ public class Login {
 	@Column(nullable = false)
 	private Date dataExpiracaoToken;
 
+	public Login() {}
+	
+	public Login(String email, String senha) {
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public Long getId() {
 		return id;
 	}

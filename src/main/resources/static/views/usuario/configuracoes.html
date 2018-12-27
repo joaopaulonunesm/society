@@ -1,0 +1,115 @@
+<div class="container-fluid">
+
+        <div class="row">
+
+                <div ng-include="'views/usuario/component/sidebar.html'"></div>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Configurações</h1>
+                        </div>
+
+                        <br/>
+
+                        <div class="accordion" id="informacoes">
+                                <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                                <h2 class="mb-0">
+                                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseInformacoes" aria-expanded="true" aria-controls="collapseInformacoes">
+                                                                Informações
+                                                        </button>
+                                                </h2>
+                                        </div>
+                                
+                                        <div id="collapseInformacoes" class="collapse" aria-labelledby="headingOne" data-parent="#informacoes">
+                                                <div class="card-body">
+                                                        <h4 class="mb-3">Contato</h4>
+
+                                                        <form class="needs-validation" novalidate>
+                                                
+                                                                <div class="row">
+                                                                        <div class="col-md-12 mb-3">
+                                                                                <label for="nome">Nome</label>
+                                                                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="usuario.nome" required />
+                                                                                <div class="invalid-feedback">
+                                                                                        Por favor insira um nome.
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                
+                                                                <div class="row">
+                                                                        <div class="col-md-12 mb-3">
+                                                                                <label for="email">Email</label>
+                                                                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="usuario.login.email" required />
+                                                                                <div class="invalid-feedback">
+                                                                                        Por favor insira um email valido.
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                        <div class="col-md-6 mb-3">
+                                                                                <label for="telefone">Telefone Residencial <span class="text-muted">(Opcional)</span></label>
+                                                                                <input type="text" class="form-control" id="telefone" ng-model="usuario.telefone" />
+                                                                                <div class="invalid-feedback">
+                                                                                        Por favor insira um telefone valido.
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-3">
+                                                                                <label for="celular">Celular</label>
+                                                                                <input type="text" class="form-control" id="celular" required ng-model="usuario.celular" />
+                                                                                <div class="invalid-feedback">
+                                                                                        Por favor insira um celular valido.
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                
+                                                                <button class="btn btn-success" style="float:right" ng-click="alterarInformacoes()">SALVAR</button>
+                                                        </form>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="accordion" id="trocarSenha">
+                                <div class="card">
+                                        <div class="card-header" id="trocarSenha">
+                                                <h2 class="mb-0">
+                                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSenha" aria-expanded="true" aria-controls="collapseSenha">
+                                                                Trocar Senha
+                                                        </button>
+                                                </h2>
+                                        </div>
+
+                                        <div id="collapseSenha" class="collapse" aria-labelledby="trocarSenha" data-parent="#trocarSenha">
+                                                <div class="card-body">
+
+                                                        <form class="needs-validation" novalidate>
+                                                
+                                                                <div class="row">
+                                                                        <div class="col-md-6 mb-3">
+                                                                                <label for="senhaAtual">Senha Atual</label>
+                                                                                <input type="password" class="form-control" id="senhaAtual" required ng-model="trocarSenhaVO.senhaAtual" />
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-3">
+                                                                                <label for="novaSenha">Nova Senha</label>
+                                                                                <input type="password" class="form-control" id="novaSenha" required ng-model="trocarSenhaVO.novaSenha" />
+                                                                        </div>
+                                                                </div>
+                                
+                                                                <hr class="mb-4">
+                                                
+                                                                <button class="btn btn-success" style="float:right" ng-click="trocarSenha()">SALVAR</button>
+                                                        </form>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                </main>
+
+        </div>
+</div>

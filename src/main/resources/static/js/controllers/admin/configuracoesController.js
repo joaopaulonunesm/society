@@ -1,6 +1,17 @@
-angular.module("societyApp").controller("loginAdminController", function ($scope, loginAPI, configs) {
-    
+angular.module("societyApp").controller("configuracoesController", function ($scope, loginAPI, societyAPI, $location, configs) {
+
     $scope.trocarSenhaVO = {};
+
+    $scope.alterarInformacoes = function() {
+
+		societyAPI.alterar($scope.society).then(function(response) {
+
+			$location.path("/");
+
+		}, function(response) {
+            alert(response.data.error);
+		});
+    };
 
     $scope.trocarSenha = function() {
 

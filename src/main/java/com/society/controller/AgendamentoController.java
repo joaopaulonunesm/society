@@ -31,15 +31,16 @@ public class AgendamentoController {
 		}
 	}
 
-	@PutMapping("/agendamentos/{id}")
-	public ResponseEntity<ResponseSocietyVO> alterar(@PathVariable Long id, @RequestBody Agendamento agendamento) {
+	@GetMapping("/agendamentos/{id}")
+	public ResponseEntity<ResponseSocietyVO> buscarPorId(@PathVariable Long id) {
 
 		try {
-			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.alterar(id, agendamento)), HttpStatus.OK);
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscarPorId(id)), HttpStatus.OK);
 		} catch (BusinessException e) {
 			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
 		}
 	}
+	
 	
 	@PutMapping("/agendamentos/{id}/confirmacao/{confirmacao}")
 	public ResponseEntity<ResponseSocietyVO> confirmarOuCancelar(@PathVariable Long id, @PathVariable String confirmacao) {
@@ -51,27 +52,21 @@ public class AgendamentoController {
 		}
 	}
 
-	@GetMapping("/agendamentos/{id}")
-	public ResponseEntity<ResponseSocietyVO> buscarPorId(@PathVariable Long id) {
-
-		try {
-			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscarPorId(id)), HttpStatus.OK);
-		} catch (BusinessException e) {
-			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
-		}
-	}
-	
-	@GetMapping("/agendamentos/society/{idSociety}")
-	public ResponseEntity<ResponseSocietyVO> buscarPorSociety(@PathVariable Long idSociety) {
-
-		return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscarPorSociety(idSociety)), HttpStatus.OK);
-	}
-	
 	@GetMapping("/v1/agendamentos/society")
 	public ResponseEntity<ResponseSocietyVO> buscaComTokenPorSociety(@RequestHeader(value = "Authorization") String token) {
 
 		try {
 			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscaComTokenPorSociety(token)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
+	}
+    
+	@GetMapping("/v1/agendamentos/usuario")
+	public ResponseEntity<ResponseSocietyVO> buscaComTokenPorUsuario(@RequestHeader(value = "Authorization") String token) {
+
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.buscaComTokenPorUsuario(token)), HttpStatus.OK);
 		} catch (BusinessException e) {
 			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
 		}

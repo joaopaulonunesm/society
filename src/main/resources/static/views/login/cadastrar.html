@@ -1,0 +1,71 @@
+<div ng-include="'views/login/components/navbar.html'"></div>
+
+<div class="container marketing">
+
+        <div class="md-5 text-center" style="margin-top: 50px">
+                <h2>Crie seu Login</h2>
+                <p class="lead">Preencha o formulário para criar um login.</p>
+        </div>
+
+        <form class="needs-validation" novalidate>
+
+                <h4 class="mb-3">Contato</h4>
+
+                <div class="row">
+                        <div class="col-md-12 mb-3">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="usuarioVO.nome" required />
+                                <div class="invalid-feedback">
+                                        Por favor insira um nome.
+                                </div>
+                        </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-md-6 mb-3">
+                                <label for="telefone">Telefone Residencial <span class="text-muted">(Opcional)</span></label>
+                                <input type="text" class="form-control" id="telefone" ng-model="usuarioVO.telefone" />
+                                <div class="invalid-feedback">
+                                        Por favor insira um telefone valido.
+                                </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                                <label for="celular">Celular</label>
+                                <input type="text" class="form-control" id="celular" required ng-model="usuarioVO.celular" />
+                                <div class="invalid-feedback">
+                                        Por favor insira um celular valido.
+                                </div>
+                        </div>
+                </div>
+
+                <hr class="mb-4">
+
+                <h4 class="mb-3">Informações de Login</h4>
+
+                <div class="row">
+                        <div class="col-md-12 mb-3">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="usuarioVO.email" required />
+                                <div class="invalid-feedback">
+                                        Por favor insira um email valido.
+                                </div>
+                        </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-md-6 mb-3">
+                                <label for="senha">Senha</label>
+                                <input type="password" class="form-control" id="senha" ng-model="usuarioVO.senha" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                                <label for="confirmarSenha">Confirmar Senha</label>
+                                <input type="password" class="form-control" id="confirmarSenha" ng-model="senhaConfirmada" required />
+                        </div>
+                </div>
+
+                <hr class="mb-4">
+
+                <button class="btn btn-success btn-lg btn-block" ng-click="salvarUsuario()">SALVAR</button>
+        </form>
+
+</div>

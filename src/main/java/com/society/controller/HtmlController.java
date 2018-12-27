@@ -15,10 +15,15 @@ public class HtmlController {
 	public String admin() {
 		return "admin";
 	}
+	
+	@RequestMapping("/usuario")
+	public String usuario() {
+		return "usuario";
+	}
 
-	@RequestMapping("/moderator")
-	public String moderator() {
-		return "moderator";
+	@RequestMapping("/moderador")
+	public String moderador() {
+		return "moderador";
 	}
 	
 	@RequestMapping("/login")

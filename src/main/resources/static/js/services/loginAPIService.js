@@ -8,9 +8,14 @@ angular.module("societyApp").factory("loginAPI", function ($http, configs){
 		return $http.put(configs.baseUrl + configs.version + '/login', trocarSenhaVO);
 	}
 
+	var _buscarPorToken = function(){
+		return $http.get(configs.baseUrl + configs.version + '/login');
+	}
+
 	return {
 		logar: _logar,
-		trocarSenha: _trocarSenha
+		trocarSenha: _trocarSenha,
+		buscarPorToken: _buscarPorToken
 	};
 
 });

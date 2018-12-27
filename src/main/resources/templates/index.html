@@ -24,11 +24,15 @@
 
 <script src="js/interceptors/tokenInterceptor.js"></script>
 
-<script src="js/controllers/agendamento/agendamentoController.js"></script>
-<script src="js/controllers/society/societyController.js"></script>
+<script src="js/controllers/index/agendarJogoController.js"></script>
+<script src="js/controllers/index/buscarSocietiesController.js"></script>
+<script src="js/controllers/index/cadastrarSocietyController.js"></script>
+<script src="js/controllers/index/usuarioController.js"></script>
 
 <script src="js/services/societyAPIService.js"></script>
 <script src="js/services/agendamentoAPIService.js"></script>
+<script src="js/services/usuarioAPIService.js"></script>
+<script src="js/services/loginAPIService.js"></script>
 
 <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
 <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
@@ -39,17 +43,13 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 </head>
-<body>
-	
-	<div ng-controller="societyController">
-	
+<body ng-controller="usuarioController">
+
 		<div ng-include="'views/index/component/navbar.html'"></div>
 
 		<ng-view></ng-view>
 
 		<div ng-include="'views/index/component/footer.html'"></div>
-		
-	</div>
 	
 </body>
 </html>

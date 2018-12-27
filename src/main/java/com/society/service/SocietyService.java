@@ -21,7 +21,7 @@ public class SocietyService {
 	@Autowired
 	private LoginService loginService;
 
-	public Society criar(Society society) {
+	public Society criar(Society society) throws BusinessException {
 		
 		society.setNomeUrl(society.getNome());
 		society.setQuantidadeJogos(0l);

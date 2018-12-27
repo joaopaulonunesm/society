@@ -2,7 +2,7 @@ package com.society.enums;
 
 public enum StatusAgendamento {
 
-	CONFIRMADO, CANCELADO, AGUARDANDO_SOCIETY;
+	AGUARDANDO_SOCIETY, CONFIRMADO, CANCELADO;
 
 	public static StatusAgendamento getPorString(String confirmacao) {
 

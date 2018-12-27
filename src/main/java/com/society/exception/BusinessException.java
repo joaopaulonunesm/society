@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 @SuppressWarnings("serial")
 public class BusinessException extends Exception {
 
-	private HttpStatus httpStatus;
+	private final HttpStatus httpStatus;
 
 	public HttpStatus getHttpStatus() {
 		return httpStatus;

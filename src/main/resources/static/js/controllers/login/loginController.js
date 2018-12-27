@@ -2,8 +2,6 @@ angular.module("societyApp").controller("loginController", function ($scope, log
     
     $scope.login = {};
 
-    $scope.trocarSenhaVO = {};
-
     $scope.logar = function() {
 
         if($scope.login.senha != null && $scope.login.email != null){
@@ -12,23 +10,19 @@ angular.module("societyApp").controller("loginController", function ($scope, log
 
                 localStorage.setItem("token", response.data.data.token);
 
-			    $(location).attr('href', configs.siteUrl + '/admin');
-    
-            }, function(response) {
-			    alert(response.data.error);
-            });
+                if(response.data.data.tipoLogin == 'SOCIETY'){
 
-        }
+                    $(location).attr('href', configs.siteUrl + '/admin');
 
-    };
+                } else if (response.data.data.tipoLogin == 'USUARIO'){
 
-    $scope.trocarSenha = function() {
+                    $(location).attr('href', configs.siteUrl + '/usuario');
 
-        if($scope.trocarSenhaVO.senhaAtual != null && $scope.trocarSenhaVO.novaSenha != null){
+                } else if (response.data.data.tipoLogin == 'MODERADOR'){
 
-            loginAPI.trocarSenha($scope.trocarSenhaVO).then(function(response) {
+                    $(location).attr('href', configs.siteUrl + '/moderador');
 
-			    $(location).attr('href', configs.siteUrl + '/admin');
+                }
     
             }, function(response) {
 			    alert(response.data.error);
@@ -42,7 +36,25 @@ angular.module("societyApp").controller("loginController", function ($scope, log
 
         if(localStorage.getItem("token")){
 
-			    $(location).attr('href', configs.siteUrl + '/admin');
+            loginAPI.buscarPorToken().then(function(response) {
+
+                if(response.data.data.tipoLogin == 'SOCIETY'){
+
+                    $(location).attr('href', configs.siteUrl + '/admin');
+
+                } else if (response.data.data.tipoLogin == 'USUARIO'){
+
+                    $(location).attr('href', configs.siteUrl + '/usuario');
+
+                } else if (response.data.data.tipoLogin == 'MODERADOR'){
+
+                    $(location).attr('href', configs.siteUrl + '/moderador');
+
+                }
+    
+            }, function(response) {
+			    alert(response.data.error);
+            });
         }
 
     };

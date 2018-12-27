@@ -1,0 +1,29 @@
+<div ng-include="'views/login/components/navbar.html'"></div>
+
+<div class="container marketing" style="margin-top: 10%">
+
+    <form class="form-signin">
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">Por favor, faça o login.</h1>
+        </div>
+
+        <div class="form-label-group">
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus ng-model="login.email" >
+            <label for="inputEmail">Email</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required ng-model="login.senha">
+            <label for="inputPassword">Senha</label>
+        </div>
+
+        <button class="btn btn-lg btn-success btn-block" ng-click="logar()">Entrar</button>
+
+        <br/> 
+
+        <div class="form-label-group text-center">
+            <a class="mt-5 mb-3 text-muted" style="text-align: center" href="#/">Esqueceu sua senha?</a>
+        </div>
+    </form>
+
+</div>

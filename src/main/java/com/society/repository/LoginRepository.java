@@ -8,6 +8,6 @@ public interface LoginRepository extends JpaRepository<Login, Long>{
 
 	public Login findByEmail(String email);
 
-	public Login findByToken(String substring);
+	public Login findByToken(String token);
 	
 }

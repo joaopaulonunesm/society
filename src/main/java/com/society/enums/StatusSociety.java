@@ -2,7 +2,7 @@ package com.society.enums;
 
 public enum StatusSociety {
 
-	ATIVO, INATIVO, EM_ANALISE;
+	EM_ANALISE, ATIVO, INATIVO, ;
 	
 	public static StatusSociety getPorString(String confirmacao) {
 

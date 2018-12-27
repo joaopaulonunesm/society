@@ -17,5 +17,7 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long>{
 	public List<Agendamento> findByDataInicioAndDataFimAndSociety(Date data, Date dataFim, Long idSociety);
 	
 	public List<Agendamento> findBySocietyIdOrderByDataInicio(Long idSociety);
+
+	public List<Agendamento> findByUsuarioIdOrderByDataInicio(Long id);
 	
 }

@@ -25,7 +25,11 @@ public class SocietyController {
 	@PostMapping("/society")
 	public ResponseEntity<ResponseSocietyVO> criar(@RequestBody Society society) {
 
-		return new ResponseEntity<>(new ResponseSocietyVO().withData(societyService.criar(society)), HttpStatus.CREATED);
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(societyService.criar(society)), HttpStatus.CREATED);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
 	}
 
 	@PutMapping("/v1/society")

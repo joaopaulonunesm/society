@@ -1,4 +1,4 @@
-angular.module("societyApp").controller("agendamentoController", function ($scope, $location, agendamentoAPI, societyAPI, $routeParams, configs) {
+angular.module("societyApp").controller("agendarJogoController", function ($scope, $location, agendamentoAPI, societyAPI, $routeParams, configs) {
     
     $scope.agendamento = {};
 

@@ -24,11 +24,11 @@
 
 <script src="js/interceptors/tokenInterceptor.js"></script>
 
-<script src="js/controllers/agendamento/agendamentoAdminController.js"></script>
-<script src="js/controllers/agendamento/agendamentoController.js"></script>
-<script src="js/controllers/agendamento/agendamentoIdController.js"></script>
-<script src="js/controllers/society/societyAdminController.js"></script>
-<script src="js/controllers/login/loginAdminController.js"></script>
+<script src="js/controllers/admin/agendamentoController.js"></script>
+<script src="js/controllers/admin/agendamentosController.js"></script>
+<script src="js/controllers/admin/agendarJogoController.js"></script>
+<script src="js/controllers/admin/configuracoesController.js"></script>
+<script src="js/controllers/admin/societyController.js"></script>
 
 <script src="js/services/societyAPIService.js"></script>
 <script src="js/services/agendamentoAPIService.js"></script>
@@ -48,15 +48,11 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 </head>
-<body>
+<body ng-controller="societyController">
 	
-	<div ng-controller="societyAdminController">
-	
-		<div ng-include="'views/admin/component/navbar.html'"></div>
+	<div ng-include="'views/admin/component/navbar.html'"></div>
 
-		<ng-view ng-controller="agendamentoAdminController"></ng-view>
-		
-	</div>
+	<ng-view></ng-view>
 	
 </body>
 </html>

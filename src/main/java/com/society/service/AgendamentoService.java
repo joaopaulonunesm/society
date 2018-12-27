@@ -12,6 +12,7 @@ import com.society.enums.StatusAgendamento;
 import com.society.exception.BusinessException;
 import com.society.model.Agendamento;
 import com.society.model.Society;
+import com.society.model.Usuario;
 import com.society.repository.AgendamentoRepository;
 import com.society.utils.Utils;
 
@@ -24,6 +25,9 @@ public class AgendamentoService {
 	@Autowired
 	private SocietyService societyService;
 	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@Autowired 
 	private Utils utils;
 
@@ -35,6 +39,10 @@ public class AgendamentoService {
 		agendamento.setDataFim(utils.addHora(agendamento.getDataInicio(), 1));
 		agendamento.setStatus(StatusAgendamento.AGUARDANDO_SOCIETY);
 
+		Usuario usuario = usuarioService.buscarPorId(agendamento.getUsuario().getId());
+		
+		agendamento.setUsuario(usuario);
+		
 		valida(agendamento);
 		
 		Agendamento agendamentoSalvo = agendamentoRepository.save(agendamento);
@@ -44,21 +52,6 @@ public class AgendamentoService {
 		return agendamentoSalvo;
 	}
 	
-	public Agendamento alterar(Long id, Agendamento agendamento) throws BusinessException {
-		
-		Agendamento agendamentoExistente = buscarPorId(id);
-		
-		// Respeitara o id passado no parametro da API
-		agendamento.setId(agendamentoExistente.getId());
-		// Não é permitido alterar society do agendamento
-		agendamento.setSociety(agendamentoExistente.getSociety());
-		agendamento.setDataFim(utils.addHora(agendamento.getDataInicio(), 1));
-		
-		valida(agendamento);
-		
-		return agendamentoRepository.save(agendamento);
-	}
-
 	public Agendamento buscarPorId(Long id) throws BusinessException {
 
 		Optional<Agendamento> busca = agendamentoRepository.findById(id);
@@ -70,17 +63,6 @@ public class AgendamentoService {
 		return busca.get();
 	}
 
-	public List<Agendamento> buscarPorSociety(Long idSociety) {
-		return agendamentoRepository.findBySocietyIdOrderByDataInicio(idSociety);
-	}
-
-	public List<Agendamento> buscaComTokenPorSociety(String token) throws BusinessException {
-
-		Society society = societyService.buscarPorToken(token);
-		
-		return agendamentoRepository.findBySocietyIdOrderByDataInicio(society.getId());
-	}
-	
 	public Agendamento confirmarOuCancelar(Long id, String confirmacao) throws BusinessException {
 
 		if(!confirmacao.equalsIgnoreCase(StatusAgendamento.CONFIRMADO.toString()) && !confirmacao.equalsIgnoreCase(StatusAgendamento.CANCELADO.toString())) {
@@ -92,6 +74,21 @@ public class AgendamentoService {
 		agendamento.setStatus(StatusAgendamento.getPorString(confirmacao));
 
 		return agendamentoRepository.save(agendamento);
+	}
+	
+	public List<Agendamento> buscaComTokenPorSociety(String token) throws BusinessException {
+
+		Society society = societyService.buscarPorToken(token);
+		
+		return agendamentoRepository.findBySocietyIdOrderByDataInicio(society.getId());
+	}
+	
+
+	public List<Agendamento> buscaComTokenPorUsuario(String token) throws BusinessException {
+
+		Usuario usuario = usuarioService.buscarPorToken(token);
+		
+		return agendamentoRepository.findByUsuarioIdOrderByDataInicio(usuario.getId());
 	}
 
 	private void valida(Agendamento agendamento) throws BusinessException {

@@ -25,12 +25,9 @@ public class Agendamento {
 	@OneToOne
 	@JoinColumn(name = "id_society")
 	private Society society;
-	@Column(nullable = false)
-	private String nomeResponsavel;
-	private Long telefone;
-	@Column(nullable = false)
-	private Long celular;
-	private String email;
+	@OneToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Date dataInicio;
@@ -56,36 +53,12 @@ public class Agendamento {
 		this.society = society;
 	}
 
-	public String getNomeResponsavel() {
-		return nomeResponsavel;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setNomeResponsavel(String nomeResponsavel) {
-		this.nomeResponsavel = nomeResponsavel;
-	}
-
-	public Long getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Long telefone) {
-		this.telefone = telefone;
-	}
-
-	public Long getCelular() {
-		return celular;
-	}
-
-	public void setCelular(Long celular) {
-		this.celular = celular;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Date getDataInicio() {
