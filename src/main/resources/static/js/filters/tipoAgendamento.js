@@ -4,11 +4,11 @@ angular.module("societyApp").filter("tipoAgendamento", function () {
         var output = null;
 
         if(tipoAgendamento == "CONFIRMADO"){
-            output = input.filter(function(obj){ return obj.status == "CONFIRMADO"; });
+            output = input.filter(function(obj){ return obj.statusAgendamento == "CONFIRMADO"; });
         } else if (tipoAgendamento == "CANCELADO"){
-            output = input.filter(function(obj){ return obj.status == "CANCELADO"; });
+            output = input.filter(function(obj){ return obj.statusAgendamento == "CANCELADO"; });
         } else if (tipoAgendamento == "AGUARDANDO_SOCIETY"){
-            output = input.filter(function(obj){ return obj.status == "AGUARDANDO_SOCIETY"; });
+            output = input.filter(function(obj){ return obj.statusAgendamento == "AGUARDANDO_SOCIETY"; });
         }
 
 		return output;

@@ -35,7 +35,7 @@ public class Agendamento {
 	@Column(nullable = false)
 	private Date dataFim;
 	private String observacao;
-	private StatusAgendamento status;
+	private Integer statusAgendamento;
 
 	public Long getId() {
 		return id;
@@ -85,12 +85,12 @@ public class Agendamento {
 		this.observacao = observacao;
 	}
 
-	public StatusAgendamento getStatus() {
-		return status;
+	public StatusAgendamento getStatusAgendamento() {
+		return StatusAgendamento.buscarPorId(statusAgendamento);
 	}
 
-	public void setStatus(StatusAgendamento status) {
-		this.status = status;
+	public void setStatusAgendamento(StatusAgendamento statusAgendamento) {
+		this.statusAgendamento = statusAgendamento.getId();
 	}
 
 }

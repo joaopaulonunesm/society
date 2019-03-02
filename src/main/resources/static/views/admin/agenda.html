@@ -1,0 +1,28 @@
+<div class="container-fluid">
+        <div class="row">
+
+                <div ng-include="'views/admin/component/sidebar.html'"></div>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: -90px">
+                                        
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Agenda</h1>
+                        </div>
+
+                        <div ng-repeat="agendamento in agendamentos | tipoAgendamento: 'CONFIRMADO' | orderBy:'-dataInicio'">
+                                <div class="card">
+                                        <div class="card-body">
+                                                <h5 class="card-title">{{agendamento.usuario.nome}}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">Data: {{agendamento.dataInicio | date:'dd/MM/yyyy'}} as {{agendamento.dataInicio | date:'hh:mm'}} até {{agendamento.dataFim | date:'hh:mm'}}</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted">{{statusAgendamento(agendamento)}}</h6>
+                                                <p class="card-text">Contato {{agendamento.usuario.celular}}</p>
+                                                <p class="card-text">{{agendamento.observacao}}</p>
+                                        </div>
+                                </div>
+                                <br/>
+                        </div>
+
+                </main>
+
+        </div>
+</div>

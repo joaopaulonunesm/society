@@ -10,14 +10,14 @@ angular.module("societyApp").config(function ($routeProvider) {
 		controller: "agendamentosController"
 	});
 
+	$routeProvider.when("/agenda", {
+		templateUrl: "views/admin/agenda.html",
+		controller: "agendamentosController"
+	});
+
 	$routeProvider.when("/agendamento/:id", {
 		templateUrl: "views/admin/agendamento.html",
 		controller: "agendamentoController"
-	});
-
-	$routeProvider.when("/agendamentos/agendar/:nomeUrl", {
-		templateUrl: "views/admin/agendar.html",
-		controller: "agendarJogoController"
 	});
 
 	$routeProvider.when("/configuracoes", {
@@ -25,6 +25,11 @@ angular.module("societyApp").config(function ($routeProvider) {
 		controller: "configuracoesController"
 	});
 	
+	$routeProvider.when("/trocar-senha", {
+		templateUrl: "views/admin/trocar-senha.html",
+		controller: "configuracoesController"
+	});
+
 	$routeProvider.otherwise({redirectTo: "/"});
 	
 });

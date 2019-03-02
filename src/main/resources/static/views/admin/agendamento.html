@@ -4,75 +4,75 @@
 
                 <div ng-include="'views/admin/component/sidebar.html'"></div>
 
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: -90px">
 
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                            <h1 class="h2">Agendamento</h1>
-                    </div>
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Agendamento</h1>
+                        </div>
 
-                    <br/>
+                        <br/>
 
-                    <form class="needs-validation" novalidate>
-                    
-                            <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                            <label for="nome">Nome do responsável</label>
-                                            <input type="text" class="form-control" id="nome" placeholder="" value="" ng-value="agendamento.nomeResponsavel" readonly/>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                            <label for="nome">Status do Agendamento</label>
-                                            <input type="text" class="form-control" id="nome" placeholder="" value="" ng-value="agendamento.status | statusAgendamento" readonly/>
-                                    </div>
-                            </div>
-                    
-                            <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                            <label for="dataInicio">Data Inicio</label>
-                                            <input type="text" class="form-control" id="dataInicio" ng-value="agendamento.dataInicio | date:'dd/MM/yyyy hh:mm'" readonly/>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                            <label for="dataFim">Data Fim</label>
-                                            <input type="text" class="form-control" id="dataFim" required ng-value="agendamento.dataFim | date:'dd/MM/yyyy hh:mm'"readonly/>
-                                    </div>
-                            </div>
-                    
-                            <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                            <label for="telefone">Telefone Residencial</label>
-                                            <input type="text" class="form-control" id="telefone" ng-value="agendamento.telefone" readonly/>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                            <label for="celular">Celular</label>
-                                            <input type="text" class="form-control" id="celular" required ng-value="agendamento.celular" readonly/>
-                                    </div>
-                            </div>
-                    
-                            <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                            <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="" value="" ng-value="agendamento.email" readonly/>
-                                    </div>
-                            </div>
-                    
-                            <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                            <label for="observacao">Observação</label>
-                                            <textarea rows="3" type="text" class="form-control" id="observacao" ng-value="agendamento.observacao" readonly/>
-                                    </div>
-                            </div> 
-                    
-                            <hr class="mb-4">
-                    
-                            <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                            <button class="btn btn-danger btn-lg btn-block" ng-click="confirmarOuCancelar(agendamento.id, 'CANCELADO')">CANCELAR</button>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                            <button class="btn btn-success btn-lg btn-block" ng-click="confirmarOuCancelar(agendamento.id, 'CONFIRMADO')">CONFIRMAR</button>
-                                    </div>
-                            </div>
-                    
-                    </form>
+                        <form class="needs-validation" novalidate>
+                        
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="nome">Nome do responsável</label>
+                                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-value="agendamento.usuario.nome" readonly/>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="nome">Status do Agendamento</label>
+                                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-value="agendamento.statusAgendamento | statusAgendamento" readonly/>
+                                        </div>
+                                </div>
+                        
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="dataInicio">Data Inicio</label>
+                                                <input type="text" class="form-control" id="dataInicio" ng-value="agendamento.dataInicio | date:'dd/MM/yyyy hh:mm'" readonly/>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="dataFim">Data Fim</label>
+                                                <input type="text" class="form-control" id="dataFim" required ng-value="agendamento.dataFim | date:'dd/MM/yyyy hh:mm'"readonly/>
+                                        </div>
+                                </div>
+                        
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="telefone">Telefone Residencial</label>
+                                                <input type="text" class="form-control" id="telefone" ng-value="agendamento.usuario.telefone" readonly/>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="celular">Celular</label>
+                                                <input type="text" class="form-control" id="celular" required ng-value="agendamento.usuario.celular" readonly/>
+                                        </div>
+                                </div>
+                        
+                                <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" id="email" ng-value="agendamento.usuario.login.email" readonly/>
+                                        </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                                <label for="observacao">Observação</label>
+                                                <textarea rows="3" type="text" class="form-control" id="observacao" ng-model="agendamento.observacao" readonly/>
+                                        </div>
+                                </div>  
+                                
+                                <hr class="mb-4">
+                        
+                                <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                                <button class="btn btn-danger btn-lg btn-block" ng-click="confirmarOuCancelar(agendamento.id, 'CANCELADO')">CANCELAR</button>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <button class="btn btn-success btn-lg btn-block" ng-click="confirmarOuCancelar(agendamento.id, 'CONFIRMADO')">CONFIRMAR</button>
+                                        </div>
+                                </div>
+                        
+                        </form>
 
                 </main>
         </div>

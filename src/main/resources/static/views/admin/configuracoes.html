@@ -4,178 +4,120 @@
 
                 <div ng-include="'views/admin/component/sidebar.html'"></div>
 
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: -90px">
 
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 class="h2">Configurações</h1>
                         </div>
 
                         <br/>
-
-                        <div class="accordion" id="informacoes">
-                                <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                                <h2 class="mb-0">
-                                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseInformacoes" aria-expanded="true" aria-controls="collapseInformacoes">
-                                                                Informações
-                                                        </button>
-                                                </h2>
-                                        </div>
-                                
-                                        <div id="collapseInformacoes" class="collapse" aria-labelledby="headingOne" data-parent="#informacoes">
-                                                <div class="card-body">
-                                                        <h4 class="mb-3">Society</h4>
-
-                                                        <form class="needs-validation" novalidate>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-12 mb-3">
-                                                                                <label for="nome">Nome do Society</label>
-                                                                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="society.nome" required />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um nome.
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-12 mb-3">
-                                                                                <label for="descricao">Descrição</label>
-                                                                                <textarea rows="3" type="text" class="form-control" id="descricao" ng-model="society.descricao"/>
-                                                                        </div>
-                                                                </div>  
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="valorHora">Valor por Hora</label>
-                                                                                <input type="text" class="form-control" id="valorHora" ng-model="society.valorHora" />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um valor por hora.
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="observacao">Observação <span class="text-muted">(Opcional)</span></label>
-                                                                                <input type="text" class="form-control" id="observacao" required ng-model="society.observacao" />
-                                                                        </div>
-                                                                </div>
-                                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="urlFoto">Url da Foto</label>
-                                                                                <input type="text" class="form-control" id="urlFoto" ng-model="society.urlFoto" />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira uma url de foto.
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="quantidadeCampos">Quantidade de Campos</label>
-                                                                                <input type="number" class="form-control" id="quantidadeCampos" required ng-model="society.quantidadeCampos" />
-                                                                        </div>
-                                                                </div>
-                                                
-                                                                <hr class="mb-4">
-                                                
-                                                                <h4 class="mb-3">Contato</h4>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-12 mb-3">
-                                                                                <label for="nomeResponsavel">Nome do responsável</label>
-                                                                                <input type="text" class="form-control" id="nomeResponsavel" placeholder="" value="" ng-model="society.nomeResponsavel" required />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um nome de responsável.
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="telefone">Telefone Residencial <span class="text-muted">(Opcional)</span></label>
-                                                                                <input type="text" class="form-control" id="telefone" ng-model="society.telefone" />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um telefone valido.
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="celular">Celular</label>
-                                                                                <input type="text" class="form-control" id="celular" required ng-model="society.celular" />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um celular valido.
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-12 mb-3">
-                                                                                <label for="email">Email</label>
-                                                                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="society.login.email"/>
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um email valido.
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="endereco">Endereço</label>
-                                                                                <input type="text" class="form-control" id="endereco" ng-model="society.endereco" />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um endereço valido.
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="cep">CEP</label>
-                                                                                <input type="text" class="form-control" id="cep" required ng-model="society.cep" />
-                                                                                <div class="invalid-feedback">
-                                                                                        Por favor insira um cep valido.
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                
-                                                                <hr class="mb-4">
-                                                
-                                                                <button class="btn btn-success" style="float:right" ng-click="alterarInformacoes()">SALVAR</button>
-                                                        </form>
-                                                </div>
+                 
+                        <div class="row">
+                                <div class="col-md-12 mb-3">
+                                        <label for="nome">Nome do Society</label>
+                                        <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="society.nome" required />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um nome.
                                         </div>
                                 </div>
                         </div>
-
+        
+                        <div class="row">
+                                <div class="col-md-12 mb-3">
+                                        <label for="descricao">Descrição</label>
+                                        <textarea rows="3" type="text" class="form-control" id="descricao" ng-model="society.descricao"/>
+                                </div>
+                        </div>  
+        
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                        <label for="valorHora">Valor por Hora</label>
+                                        <input type="text" class="form-control" id="valorHora" ng-model="society.valorHora" />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um valor por hora.
+                                        </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                        <label for="observacao">Observação <span class="text-muted">(Opcional)</span></label>
+                                        <input type="text" class="form-control" id="observacao" required ng-model="society.observacao" />
+                                </div>
+                        </div>
+                        
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                        <label for="urlFoto">Url da Foto</label>
+                                        <input type="text" class="form-control" id="urlFoto" ng-model="society.urlFoto" />
+                                        <div class="invalid-feedback">
+                                                Por favor insira uma url de foto.
+                                        </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                        <label for="quantidadeCampos">Quantidade de Campos</label>
+                                        <input type="number" class="form-control" id="quantidadeCampos" required ng-model="society.quantidadeCampos" />
+                                </div>
+                        </div>
+        
+                        <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom px-2">
+                                <h1 class="h2">Contato</h1>
+                        </div>
+        
+                        <div class="row">
+                                <div class="col-md-12 mb-3">
+                                        <label for="nomeResponsavel">Nome do responsável</label>
+                                        <input type="text" class="form-control" id="nomeResponsavel" placeholder="" value="" ng-model="society.nomeResponsavel" required />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um nome de responsável.
+                                        </div>
+                                </div>
+                        </div>
+        
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                        <label for="telefone">Telefone Residencial <span class="text-muted">(Opcional)</span></label>
+                                        <input type="text" class="form-control" id="telefone" ng-model="society.telefone" />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um telefone valido.
+                                        </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                        <label for="celular">Celular</label>
+                                        <input type="text" class="form-control" id="celular" required ng-model="society.celular" />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um celular valido.
+                                        </div>
+                                </div>
+                        </div>
+        
+                        <div class="row">
+                                <div class="col-md-12 mb-3">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="society.login.email"/>
+                                        <div class="invalid-feedback">
+                                                Por favor insira um email valido.
+                                        </div>
+                                </div>
+                        </div>
+        
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                        <label for="endereco">Endereço</label>
+                                        <input type="text" class="form-control" id="endereco" ng-model="society.endereco" />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um endereço valido.
+                                        </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                        <label for="cep">CEP</label>
+                                        <input type="text" class="form-control" id="cep" required ng-model="society.cep" />
+                                        <div class="invalid-feedback">
+                                                Por favor insira um cep valido.
+                                        </div>
+                                </div>
+                        </div>
+        
                         <br/>
 
-                        <div class="accordion" id="trocarSenha">
-                                <div class="card">
-                                        <div class="card-header" id="trocarSenha">
-                                                <h2 class="mb-0">
-                                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSenha" aria-expanded="true" aria-controls="collapseSenha">
-                                                                Trocar Senha
-                                                        </button>
-                                                </h2>
-                                        </div>
-
-                                        <div id="collapseSenha" class="collapse" aria-labelledby="trocarSenha" data-parent="#trocarSenha">
-                                                <div class="card-body">
-
-                                                        <form class="needs-validation" novalidate>
-                                                
-                                                                <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="senhaAtual">Senha Atual</label>
-                                                                                <input type="password" class="form-control" id="senhaAtual" required ng-model="trocarSenhaVO.senhaAtual" />
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                                <label for="novaSenha">Nova Senha</label>
-                                                                                <input type="password" class="form-control" id="novaSenha" required ng-model="trocarSenhaVO.novaSenha" />
-                                                                        </div>
-                                                                </div>
-                                
-                                                                <hr class="mb-4">
-                                                
-                                                                <button class="btn btn-success" style="float:right" ng-click="trocarSenha()">SALVAR</button>
-                                                        </form>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
+                        <button class="btn btn-success" style="float:right" ng-click="alterarInformacoes()">SALVAR</button>
 
                 </main>
 

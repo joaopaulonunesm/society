@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.society.enums.TipoLogin;
 
 @Entity
 public class Login {
@@ -30,9 +31,11 @@ public class Login {
 	@JsonIgnore
 	@Column(nullable = false)
 	private Date dataExpiracaoToken;
+	private Integer tipoLogin;
 
-	public Login() {}
-	
+	public Login() {
+	}
+
 	public Login(String email, String senha) {
 		this.email = email;
 		this.senha = senha;
@@ -76,6 +79,14 @@ public class Login {
 
 	public void setDataExpiracaoToken(Date dataExpiracaoToken) {
 		this.dataExpiracaoToken = dataExpiracaoToken;
+	}
+
+	public TipoLogin getTipoLogin() {
+		return TipoLogin.buscarPorId(tipoLogin);
+	}
+
+	public void setTipoLogin(TipoLogin tipoLogin) {
+		this.tipoLogin = tipoLogin.getId();
 	}
 
 }

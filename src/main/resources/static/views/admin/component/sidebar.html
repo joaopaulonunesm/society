@@ -1,25 +1,45 @@
-<nav class="col-md-2 d-none d-md-block bg-success sidebar" style="margin-top: 30px">
-        <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                        <li class="nav-item">
-                                <a class="nav-link active text-light" href="#/">
-                                <span data-feather="home"></span>
-                                        Dashboard <span class="sr-only">(current)</span>
-                                </a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link text-light" href="#/agendamentos">
-                                <span data-feather="file"></span>
-                                        Jogos
-                                </a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link text-light" href="#/configuracoes">
-                                <span data-feather="shopping-cart"></span>
-                                        Configurações
-                                </a>
-                        </li>
+<nav class="col-md-2 d-none d-md-block bg-success sidebar" style="margin-top:-30px">
 
-                </ul>
-        </div>
+        <ul class="nav flex-column">
+                <li class="sidebar-brand" style="margin: auto;">
+                        <a class="navbar-brand" href="/"><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/S-Bahn-Logo.svg/220px-S-Bahn-Logo.svg.png" width="70" height="70" alt=""></a>
+                </li>
+                <br/>
+                <li class="nav-item">
+                        <a class="nav-link active text-light" href="#/">
+                        <span data-feather="dashboard"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link text-light" href="#/agendamentos">
+                        <span data-feather="jogos"></span>
+                                Meus Jogos
+                        </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link text-light" href="#/agenda">
+                        <span data-feather="agenda"></span>
+                                Agenda
+                        </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link text-light" href="#/configuracoes">
+                        <span data-feather="configuracoes"></span>
+                                Configurações
+                        </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link text-light" href="#/trocar-senha">
+                        <span data-feather="troca-senha"></span>
+                                Trocar Senha
+                        </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link text-light" href="/" ng-click="sair()">
+                        <span data-feather="sair"></span>
+                                Sair
+                        </a>
+                </li>
+        </ul>
 </nav>

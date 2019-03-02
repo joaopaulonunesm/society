@@ -5,7 +5,7 @@
 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
 <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
                 <h5>Jogos Pendentes de Confirmação</h5>
                 <div class="table-responsive" style="margin-top: 10px">
                         <table class="table table-striped table-sm">
@@ -15,20 +15,30 @@
                                                 <th>Celular</th>
                                                 <th>Inicio</th>
                                                 <th>Fim</th>
+                                                <th>Visualizar</th>
                                         </tr>
                                 </thead>
                                 <tbody>
-                                        <tr ng-repeat="agendamento in agendamentos | tipoAgendamento: 'AGUARDANDO_SOCIETY' | limitTo: 7">
-                                                <td>{{agendamento.nomeResponsavel}}</td>
-                                                <td>{{agendamento.celular}}</td>
+                                        <tr ng-repeat="agendamento in agendamentos | tipoAgendamento: 'AGUARDANDO_SOCIETY' | orderBy:'-dataInicio' | limitTo: 7">
+                                                <td>{{agendamento.usuario.nome}}</td>
+                                                <td>{{agendamento.usuario.celular}}</td>
                                                 <td>{{agendamento.dataInicio | date:'dd/MM/yyyy hh:mm'}}</td>
                                                 <td>{{agendamento.dataFim | date:'dd/MM/yyyy hh:mm'}}</td>
+                                                <td>
+                                                        <a ng-href="#/agendamento/{{agendamento.id}}" class="btn btn-success btn-sm">
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                </td>
                                         </tr>
                                 </tbody>
                         </table>
                 </div>
         </div>
-        <div class="col-md-6">
+</div>
+<br/>
+<div class="row">
+        
+        <div class="col-md-12">
                 <h5>Jogos Confirmados</h5>
                 <div class="table-responsive" style="margin-top: 10px">
                         <table class="table table-striped table-sm">
@@ -41,9 +51,9 @@
                                         </tr>
                                 </thead>
                                 <tbody>
-                                        <tr ng-repeat="agendamento in agendamentos | tipoAgendamento: 'CONFIRMADO' | limitTo: 7">
-                                                <td>{{agendamento.nomeResponsavel}}</td>
-                                                <td>{{agendamento.celular}}</td>
+                                        <tr ng-repeat="agendamento in agendamentos | tipoAgendamento: 'CONFIRMADO' | orderBy:'-dataInicio' | limitTo: 7">
+                                                <td>{{agendamento.usuario.nome}}</td>
+                                                <td>{{agendamento.usuario.celular}}</td>
                                                 <td>{{agendamento.dataInicio | date:'dd/MM/yyyy hh:mm'}}</td>
                                                 <td>{{agendamento.dataFim | date:'dd/MM/yyyy hh:mm'}}</td>
                                         </tr>

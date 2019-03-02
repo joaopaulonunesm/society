@@ -26,8 +26,6 @@ public class Usuario {
 	private Long telefone;
 	@Column(nullable = false)
 	private Long celular;
-	@Column(nullable = false)
-	private boolean moderador;
 
 	public Long getId() {
 		return id;
@@ -67,14 +65,6 @@ public class Usuario {
 
 	public void setCelular(Long celular) {
 		this.celular = celular;
-	}
-
-	public boolean isModerador() {
-		return moderador;
-	}
-
-	public void setModerador(boolean moderador) {
-		this.moderador = moderador;
 	}
 
 }

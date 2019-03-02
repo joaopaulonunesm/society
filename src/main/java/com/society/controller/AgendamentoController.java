@@ -41,17 +41,6 @@ public class AgendamentoController {
 		}
 	}
 	
-	
-	@PutMapping("/agendamentos/{id}/confirmacao/{confirmacao}")
-	public ResponseEntity<ResponseSocietyVO> confirmarOuCancelar(@PathVariable Long id, @PathVariable String confirmacao) {
-
-		try {
-			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.confirmarOuCancelar(id, confirmacao)), HttpStatus.OK);
-		} catch (BusinessException e) {
-			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
-		}
-	}
-
 	@GetMapping("/v1/agendamentos/society")
 	public ResponseEntity<ResponseSocietyVO> buscaComTokenPorSociety(@RequestHeader(value = "Authorization") String token) {
 
@@ -72,4 +61,14 @@ public class AgendamentoController {
 		}
 	}
 	
+	@PutMapping("/agendamentos/{id}/confirmacao/{confirmacao}")
+	public ResponseEntity<ResponseSocietyVO> confirmarOuCancelar(@PathVariable Long id, @PathVariable String confirmacao) {
+
+		try {
+			return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoService.confirmarOuCancelar(id, confirmacao)), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<>(new ResponseSocietyVO().withError(e.getMessage()), e.getHttpStatus());
+		}
+	}
+
 }

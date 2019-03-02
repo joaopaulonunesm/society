@@ -26,6 +26,7 @@ angular.module("societyApp").controller("agendamentoController", function ($scop
 		}, function(response) {
             if(response.status != 401){
                 alert(response.data.error);
+                $location.path("/agendamentos");
             }
 		});
 

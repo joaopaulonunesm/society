@@ -8,6 +8,7 @@ angular.module("societyApp").value("configs", {
 
 	version: "/v1",
 
-	timeZone: "-0200"
+	// -0200 sem horario de verão -0300 para horario de verão.
+	timeZone: "-0300"
 
 });

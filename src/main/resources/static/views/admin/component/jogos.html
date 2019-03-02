@@ -1,6 +1,6 @@
 <div class="table-responsive">
-        <table class="table">
-                <thead class="thead-dark">
+        <table class="table table-bordered">
+                <thead class="thead-light">
                         <tr>
                                 <th>Nome</th>
                                 <th>Celular</th>
@@ -11,13 +11,13 @@
                         </tr>
                 </thead>
                 <tbody>
-                        <tr ng-repeat="agendamento in agendamentos">
-                                <td>{{agendamento.nomeResponsavel}}</td>
-                                <td>{{agendamento.celular}}</td>
+                        <tr ng-repeat="agendamento in agendamentos | orderBy:'-dataInicio'">
+                                <td>{{agendamento.usuario.nome}}</td>
+                                <td>{{agendamento.usuario.celular}}</td>
                                 <td>{{agendamento.dataInicio | date:'dd/MM/yyyy hh:mm'}}</td>
                                 <td>{{agendamento.dataFim | date:'dd/MM/yyyy hh:mm'}}</td>
-                                <td>{{agendamento.status | statusAgendamento}}</td>
-                                <td>
+                                <td>{{agendamento.statusAgendamento | statusAgendamento}}</td>
+                                <td style="text-align: center">
                                         <a ng-href="#/agendamento/{{agendamento.id}}" class="btn btn-success btn-sm">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>

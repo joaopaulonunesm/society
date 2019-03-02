@@ -2,11 +2,31 @@ package com.society.enums;
 
 public enum StatusAgendamento {
 
-	AGUARDANDO_SOCIETY, CONFIRMADO, CANCELADO;
+	AGUARDANDO_SOCIETY(1), CONFIRMADO(2), CANCELADO(3);
 
-	public static StatusAgendamento getPorString(String confirmacao) {
+	private Integer id;
 
-		if(confirmacao.equalsIgnoreCase(CONFIRMADO.toString())) {
+	private StatusAgendamento(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public static StatusAgendamento buscarPorId(Integer id) {
+
+		for (StatusAgendamento status : values()) {
+			if (status.getId() == id)
+				return status;
+		}
+
+		return null;
+	}
+	
+	public static StatusAgendamento buscarPorString(String confirmacao) {
+
+		if (confirmacao.equalsIgnoreCase(CONFIRMADO.toString())) {
 			return CONFIRMADO;
 		} else if (confirmacao.equalsIgnoreCase(CANCELADO.toString())) {
 			return CANCELADO;
@@ -15,7 +35,7 @@ public enum StatusAgendamento {
 		} else {
 			return null;
 		}
-		
+
 	}
-	
+
 }

@@ -45,7 +45,7 @@ public class Society {
 	private Long quantidadeJogos;
 	@Column(nullable = false)
 	private Integer quantidadeCampos;
-	private StatusSociety statusSociety;
+	private Integer statusSociety;
 
 	public Long getId() {
 		return id;
@@ -172,11 +172,11 @@ public class Society {
 	}
 
 	public StatusSociety getStatusSociety() {
-		return statusSociety;
+		return StatusSociety.buscarPorId(statusSociety);
 	}
 
 	public void setStatusSociety(StatusSociety statusSociety) {
-		this.statusSociety = statusSociety;
+		this.statusSociety = statusSociety.getId();
 	}
 
 }

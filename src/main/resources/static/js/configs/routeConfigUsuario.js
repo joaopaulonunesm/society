@@ -18,6 +18,11 @@ angular.module("societyApp").config(function ($routeProvider) {
 		templateUrl: "views/usuario/configuracoes.html",
 		controller: "configuracoesController"
 	});
+
+	$routeProvider.when("/trocar-senha", {
+		templateUrl: "views/usuario/trocar-senha.html",
+		controller: "configuracoesController"
+	});
 	
 	$routeProvider.otherwise({redirectTo: "/"});
 	

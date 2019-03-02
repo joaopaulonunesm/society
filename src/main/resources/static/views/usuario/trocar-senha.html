@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+        <div class="row">
+
+                <div ng-include="'views/usuario/component/sidebar.html'"></div>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: -90px">
+
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Trocar Senha</h1>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                        <label for="senhaAtual">Senha Atual</label>
+                                        <input type="password" class="form-control" id="senhaAtual" required ng-model="trocarSenhaVO.senhaAtual" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                        <label for="novaSenha">Nova Senha</label>
+                                        <input type="password" class="form-control" id="novaSenha" required ng-model="trocarSenhaVO.novaSenha" />
+                                </div>
+                        </div>
+
+                        <br/>
+
+                        <button class="btn btn-success" style="float:right" ng-click="trocarSenha()">SALVAR</button>
+
+                </main>
+
+        </div>
+</div>

@@ -16,4 +16,22 @@ angular.module("societyApp").controller("agendamentosController", function ($sco
 
     $scope.agendamentosPorSociety();
 
+    $scope.statusAgendamento = function (agendamento) {
+
+        dataAtual = new Date();
+
+        dataInicio = new Date(agendamento.dataInicio);
+
+        dataFim = new Date(agendamento.dataFim);
+
+        if(dataAtual > dataInicio && dataAtual < dataFim){
+            return "Bola rolando!"
+        } else if (dataAtual > dataInicio && dataAtual > dataFim){
+            return "Jogo encerrado!"
+        } else if (dataAtual < dataInicio){
+            return "Próximo jogo!"
+        }
+
+    }
+
 });

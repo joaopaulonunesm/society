@@ -19,7 +19,7 @@ angular.module("societyApp").controller("configuracoesController", function ($sc
 
             loginAPI.trocarSenha($scope.trocarSenhaVO).then(function(response) {
 
-			    $(location).attr('href', configs.siteUrl + '/usuario');
+			    $location.path("/");
     
             }, function(response) {
 			    alert(response.data.error);
