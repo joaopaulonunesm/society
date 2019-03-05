@@ -1,3 +1,24 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h4 class="h4">Pendentes Aprovação</h4>
+</div>
+
+<div ng-repeat="agendamento in agendamentos | tipoAgendamento: 'AGUARDANDO_SOCIETY' | orderBy:'dataInicio'">
+        <div class="card">
+                <div class="card-body">
+                        <h5 class="card-title">{{agendamento.usuario.nome}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Status do Jogo: {{agendamento.statusAgendamento | statusAgendamentoLabel}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Data: {{agendamento.dataInicio | date:'dd/MM/yyyy'}} as {{agendamento.dataInicio | date:'hh:mm'}} até {{agendamento.dataFim | date:'hh:mm'}}</h6>
+                        <p class="card-text">Contato {{agendamento.society.celular}}</p>
+                        <a class="btn btn-success" style="margin-top: 10px" ng-href="#/agendamento/{{agendamento.id}}">ANALISAR</a> 
+                </div>
+        </div>
+        <br/>
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h4 class="h4">Todos os Jogos</h4>
+</div>
+
 <div class="table-responsive">
         <table class="table table-bordered">
                 <thead class="thead-light">
@@ -16,7 +37,7 @@
                                 <td>{{agendamento.usuario.celular}}</td>
                                 <td>{{agendamento.dataInicio | date:'dd/MM/yyyy hh:mm'}}</td>
                                 <td>{{agendamento.dataFim | date:'dd/MM/yyyy hh:mm'}}</td>
-                                <td>{{agendamento.statusAgendamento | statusAgendamento}}</td>
+                                <td>{{agendamento.statusAgendamento | statusAgendamentoLabel}}</td>
                                 <td style="text-align: center">
                                         <a ng-href="#/agendamento/{{agendamento.id}}" class="btn btn-success btn-sm">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>

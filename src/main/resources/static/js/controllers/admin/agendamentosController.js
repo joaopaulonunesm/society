@@ -26,7 +26,7 @@ angular.module("societyApp").controller("agendamentosController", function ($sco
 
         if(dataAtual > dataInicio && dataAtual < dataFim){
             return "Bola rolando!"
-        } else if (dataAtual > dataInicio && dataAtual > dataFim){
+        } else if (dataAtual > dataFim){
             return "Jogo encerrado!"
         } else if (dataAtual < dataInicio){
             return "Próximo jogo!"

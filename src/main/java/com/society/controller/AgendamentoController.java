@@ -18,6 +18,7 @@ import com.society.service.AgendamentoService;
 
 @Controller
 public class AgendamentoController {
+	
 	@Autowired
 	private AgendamentoService agendamentoService;
 

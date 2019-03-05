@@ -1,0 +1,48 @@
+<div class="container-fluid">
+        <div class="row">
+
+                <div ng-include="'views/usuario/component/sidebar.html'"></div>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: -90px">
+                                        
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Minhas Avaliações</h1> 
+                                <h3 style="float: right">Nota {{avaliacoes.media}}</h3>
+                        </div>
+
+                        <br/>
+
+                        <div ng-repeat="avaliacao in avaliacoes.avaliacoes | orderBy:'dataInicio'">
+                                <div class="card">
+                                        <div class="card-body">
+                                                <div class="row">
+                                                        <div class="col-md-8">
+                                                                <h3 class="card-title">{{avaliacao.agendamento.society.nome}}</h3>
+                                                                <p class="lead">Data: {{avaliacao.agendamento.dataInicio | date:'dd/MM/yyyy'}} as {{avaliacao.agendamento.dataInicio | date:'hh:mm'}} até {{avaliacao.agendamento.dataFim | date:'hh:mm'}}</p>
+                                                                <p class="card-text">Nome do responsável: {{avaliacao.agendamento.society.nomeResponsavel}}</p>
+                                                                <p class="card-text">Celular: {{avaliacao.agendamento.society.celular}}</p>
+                                                                <br/>
+                                                                <div class="row">
+                                                                        <div class="col-md-12">
+                                                                                <label for="nota">Nota de satisfação</label>
+                                                                                <input type="number" class="form-control" id="nota" required ng-model="avaliacao.nota" readonly/>
+                                                                        </div>
+                                                                        <div class="col-md-12" style="margin-top: 10px">
+                                                                                <label for="descricao">Descricao</label>
+                                                                                <textarea rows="3" type="text" class="form-control" id="descricao" ng-model="avaliacao.descricao" readonly/>
+                                                                        </div>
+                                                                </div>       
+                                                        </div>        
+                                                        <div class="col-md-4">
+                                                                <img class="featurette-image img-fluid mx-auto" height="236" width="236"  ng-src="{{avaliacao.agendamento.society.urlFoto}}" />
+                                                        </div>        
+                                                </div>
+                                        </div>
+                                </div>
+                                <br/>
+                        </div>
+
+                </main>
+
+        </div>
+</div>

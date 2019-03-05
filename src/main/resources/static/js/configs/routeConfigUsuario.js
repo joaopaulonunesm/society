@@ -14,6 +14,16 @@ angular.module("societyApp").config(function ($routeProvider) {
 		controller: "agendamentoController"
 	});
 
+	$routeProvider.when("/avaliacoes", {
+		templateUrl: "views/usuario/avaliacoes.html",
+		controller: "avaliacoesController"
+	});
+
+	$routeProvider.when("/avaliar", {
+		templateUrl: "views/usuario/avaliar.html",
+		controller: "avaliacaoController"
+	});
+
 	$routeProvider.when("/configuracoes", {
 		templateUrl: "views/usuario/configuracoes.html",
 		controller: "configuracoesController"

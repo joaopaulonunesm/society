@@ -1,4 +1,4 @@
-angular.module("societyApp").filter("statusAgendamento", function () {
+angular.module("societyApp").filter("statusAgendamentoLabel", function () {
 	return function (input) {
 
         if(input == "CONFIRMADO"){

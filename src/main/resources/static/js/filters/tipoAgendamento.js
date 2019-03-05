@@ -9,6 +9,15 @@ angular.module("societyApp").filter("tipoAgendamento", function () {
             output = input.filter(function(obj){ return obj.statusAgendamento == "CANCELADO"; });
         } else if (tipoAgendamento == "AGUARDANDO_SOCIETY"){
             output = input.filter(function(obj){ return obj.statusAgendamento == "AGUARDANDO_SOCIETY"; });
+        } else if (tipoAgendamento == "CONFIRMADO_FUTURO"){
+            output = input.filter(function(obj){ 
+
+                dataAtual = new Date();
+
+                dataFim = new Date(obj.dataFim);
+
+                return obj.statusAgendamento == "CONFIRMADO" && (dataAtual < dataFim); 
+            });
         }
 
 		return output;

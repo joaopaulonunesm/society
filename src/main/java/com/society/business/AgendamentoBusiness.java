@@ -118,8 +118,7 @@ public class AgendamentoBusiness {
 
 	private boolean horarioDisponivel(Agendamento agendamento) {
 
-		List<Agendamento> agendamentoExistente = agendamentoRepository.findByDataInicioAndDataFimAndSociety(
-				agendamento.getDataInicio(), agendamento.getDataFim(), agendamento.getSociety().getId());
+		List<Agendamento> agendamentoExistente = agendamentoRepository.findByDataInicioAndDataFimAndSocietyAndStatusAgendamento(agendamento.getDataInicio(), agendamento.getDataFim(), agendamento.getSociety().getId(), StatusAgendamento.CONFIRMADO.getId());
 
 		return agendamentoExistente.size() < agendamento.getSociety().getQuantidadeCampos();
 	}
