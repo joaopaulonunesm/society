@@ -15,6 +15,8 @@ import com.society.model.AvaliacaoSociety;
 import com.society.model.AvaliacaoUsuario;
 import com.society.model.Society;
 import com.society.model.Usuario;
+import com.society.repository.AvaliacaoSocietyRepository;
+import com.society.repository.AvaliacaoUsuarioRepository;
 
 @Component
 public class AvaliacaoBusiness {
