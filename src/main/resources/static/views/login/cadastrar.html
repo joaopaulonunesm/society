@@ -24,7 +24,7 @@
                 <div class="row">
                         <div class="col-md-12 mb-3">
                                 <label for="nome">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="usuarioVO.nome" required />
+                                <input type="text" class="form-control" id="nome" placeholder="" value="" ng-model="usuarioDTO.nome" required />
                                 <div class="invalid-feedback">
                                         Por favor insira um nome.
                                 </div>
@@ -34,14 +34,14 @@
                 <div class="row">
                         <div class="col-md-6 mb-3">
                                 <label for="telefone">Telefone Residencial <span class="text-muted">(Opcional)</span></label>
-                                <input type="text" class="form-control" id="telefone" ng-model="usuarioVO.telefone" />
+                                <input type="text" class="form-control" id="telefone" ng-model="usuarioDTO.telefone" />
                                 <div class="invalid-feedback">
                                         Por favor insira um telefone valido.
                                 </div>
                         </div>
                         <div class="col-md-6 mb-3">
                                 <label for="celular">Celular</label>
-                                <input type="text" class="form-control" id="celular" required ng-model="usuarioVO.celular" />
+                                <input type="text" class="form-control" id="celular" required ng-model="usuarioDTO.celular" />
                                 <div class="invalid-feedback">
                                         Por favor insira um celular valido.
                                 </div>
@@ -55,7 +55,7 @@
                 <div class="row">
                         <div class="col-md-12 mb-3">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="usuarioVO.email" required />
+                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" ng-model="usuarioDTO.email" required />
                                 <div class="invalid-feedback">
                                         Por favor insira um email valido.
                                 </div>
@@ -65,7 +65,7 @@
                 <div class="row">
                         <div class="col-md-6 mb-3">
                                 <label for="senha">Senha</label>
-                                <input type="password" class="form-control" id="senha" ng-model="usuarioVO.senha" required />
+                                <input type="password" class="form-control" id="senha" ng-model="usuarioDTO.senha" required />
                         </div>
                         <div class="col-md-6 mb-3">
                                 <label for="confirmarSenha">Confirmar Senha</label>
