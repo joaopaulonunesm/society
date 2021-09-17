@@ -1,6 +1,6 @@
 package com.society.features.login.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +35,7 @@ public class Login {
 	private String token;
 	@JsonIgnore
 	@Column(nullable = false)
-	private Date dataExpiracaoToken;
+	private LocalDateTime dataExpiracaoToken;
 	private Integer tipoLogin;
 
 	public Login(String email, String senha) {

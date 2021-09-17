@@ -35,10 +35,8 @@ public class Agendamento {
 	@OneToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private LocalDateTime dataInicio;
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private LocalDateTime dataFim;
 	private String observacao;

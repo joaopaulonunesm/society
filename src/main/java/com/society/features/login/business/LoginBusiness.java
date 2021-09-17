@@ -1,20 +1,20 @@
 package com.society.features.login.business;
 
-import java.util.Date;
-import java.util.Optional;
-
+import com.society.exceptions.BusinessException;
 import com.society.features.login.domain.Login;
 import com.society.features.login.domain.LoginDTO;
-import com.society.features.login.persistence.LoginRepository;
 import com.society.features.login.domain.TrocarSenhaDTO;
+import com.society.features.login.persistence.LoginRepository;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import com.society.exceptions.BusinessException;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -84,12 +84,12 @@ public class LoginBusiness {
 
     private Login validaToken(Login login, boolean comitar) {
 
-        if (login.getDataExpiracaoToken() == null || login.getDataExpiracaoToken().before(new Date())) {
+        if (login.getDataExpiracaoToken() == null || login.getDataExpiracaoToken().isBefore(LocalDateTime.now())) {
 
-            Date expirationDate = new Date(System.currentTimeMillis() + 240 * 60 * 1000);
+            LocalDateTime expirationDate = LocalDateTime.now().plusMinutes(3);
 
             String token = Jwts.builder().setSubject(login.getEmail())
-                    .signWith(SignatureAlgorithm.HS512, "autenticando").setExpiration(expirationDate).compact();
+                    .signWith(SignatureAlgorithm.HS512, "autenticando").setExpiration(Date.from(expirationDate.atZone(ZoneId.systemDefault()).toInstant())).compact();
 
             login.setToken(token);
             login.setDataExpiracaoToken(expirationDate);
