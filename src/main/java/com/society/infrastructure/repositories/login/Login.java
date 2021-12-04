@@ -10,8 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Login {
 
 	@Id
@@ -30,45 +38,4 @@ public class Login {
 	@JsonIgnore
 	@Column(nullable = false)
 	private Date dataExpiracaoToken;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public Date getDataExpiracaoToken() {
-		return dataExpiracaoToken;
-	}
-
-	public void setDataExpiracaoToken(Date dataExpiracaoToken) {
-		this.dataExpiracaoToken = dataExpiracaoToken;
-	}
-
 }

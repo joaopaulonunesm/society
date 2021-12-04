@@ -1,9 +1,8 @@
 package com.society.apis.backend;
 
-import com.society.usecases.enums.StatusAgendamento;
+import com.society.usecases.agendamento.StatusAgendamento;
 import com.society.infrastructure.repositories.agendamento.Agendamento;
-import com.society.usecases.models.ResponseSocietyVO;
-import com.society.usecases.services.AgendamentoUseCase;
+import com.society.usecases.agendamento.AgendamentoUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +17,18 @@ public class AgendamentoController {
     private final AgendamentoUseCase agendamentoUseCase;
 
     @PostMapping
-    public ResponseEntity<ResponseSocietyVO> agendar(@RequestBody Agendamento agendamento) {
-        return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoUseCase.criar(agendamento)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO> agendar(@RequestBody Agendamento agendamento) {
+        return new ResponseEntity<>(new ResponseApiVO().withData(agendamentoUseCase.criar(agendamento)), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseSocietyVO> alterar(@PathVariable Long id, @RequestBody Agendamento agendamento) {
-        return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoUseCase.alterar(id, agendamento)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO> alterar(@PathVariable Long id, @RequestBody Agendamento agendamento) {
+        return new ResponseEntity<>(new ResponseApiVO().withData(agendamentoUseCase.alterar(id, agendamento)), HttpStatus.OK);
     }
 
     @PutMapping("/{id}/confirmacao")
-    public ResponseEntity<ResponseSocietyVO> confirmar(@PathVariable Long id) {
-        return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoUseCase.confirmarOuCancelar(id, StatusAgendamento.CONFIRMADO)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO> confirmar(@PathVariable Long id) {
+        return new ResponseEntity<>(new ResponseApiVO().withData(agendamentoUseCase.confirmarOuCancelar(id, StatusAgendamento.CONFIRMADO)), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}/cancelamento")
@@ -39,18 +38,18 @@ public class AgendamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseSocietyVO> buscarPorId(@PathVariable Long id) {
-        return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoUseCase.buscarPorId(id)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO> buscarPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(new ResponseApiVO().withData(agendamentoUseCase.buscarPorId(id)), HttpStatus.OK);
     }
 
     @GetMapping("/agendamentos/society/{idSociety}")
-    public ResponseEntity<ResponseSocietyVO> buscarPorSociety(@PathVariable Long idSociety) {
-        return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoUseCase.buscarPorSociety(idSociety)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO> buscarPorSociety(@PathVariable Long idSociety) {
+        return new ResponseEntity<>(new ResponseApiVO().withData(agendamentoUseCase.buscarPorSociety(idSociety)), HttpStatus.OK);
     }
 
     @GetMapping("/v1/agendamentos/society")
-    public ResponseEntity<ResponseSocietyVO> buscaComTokenPorSociety(@RequestHeader(value = "Authorization") String token) {
-        return new ResponseEntity<>(new ResponseSocietyVO().withData(agendamentoUseCase.buscaComTokenPorSociety(token)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO> buscaComTokenPorSociety(@RequestHeader(value = "Authorization") String token) {
+        return new ResponseEntity<>(new ResponseApiVO().withData(agendamentoUseCase.buscaComTokenPorSociety(token)), HttpStatus.OK);
     }
 
 }

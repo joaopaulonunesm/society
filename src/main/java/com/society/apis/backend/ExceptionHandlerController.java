@@ -1,7 +1,6 @@
 package com.society.apis.backend;
 
 import com.society.usecases.exceptions.UseCaseException;
-import com.society.usecases.models.ResponseSocietyVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
@@ -18,16 +17,16 @@ public class ExceptionHandlerController {
     private final MessageSource messageSource;
 
     @ExceptionHandler(value = UseCaseException.class)
-    protected ResponseEntity<ResponseSocietyVO> handleBusinessException(final UseCaseException ex) {
+    protected ResponseEntity<ResponseApiVO> handleBusinessException(final UseCaseException ex) {
         return ResponseEntity.badRequest()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ResponseSocietyVO().withError(messageSource.getMessage(ex.getCodigo(), ex.getParametros(), Locale.getDefault())));
+                .body(new ResponseApiVO().withError(messageSource.getMessage(ex.getCodigo(), ex.getParametros(), Locale.getDefault())));
     }
 
     @ExceptionHandler(value = Exception.class)
-    protected ResponseEntity<ResponseSocietyVO> handleException(final Exception ex) {
+    protected ResponseEntity<ResponseApiVO> handleException(final Exception ex) {
         return ResponseEntity.badRequest()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ResponseSocietyVO().withError(ex.getMessage()));
+                .body(new ResponseApiVO().withError(ex.getMessage()));
     }
 }

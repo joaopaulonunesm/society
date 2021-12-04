@@ -1,4 +1,4 @@
-package com.society.usecases.enums;
+package com.society.usecases.society;
 
 public enum StatusSociety {
 

@@ -12,9 +12,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.society.infrastructure.repositories.login.Login;
-import com.society.usecases.enums.StatusSociety;
+import com.society.usecases.society.StatusSociety;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Society {
 
 	@Id
@@ -48,34 +56,6 @@ public class Society {
 	private Integer quantidadeCampos;
 	private StatusSociety statusSociety;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Login getLogin() {
-		return login;
-	}
-
-	public void setLogin(Login login) {
-		this.login = login;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getNomeUrl() {
-		return nomeUrl;
-	}
-
 	public void setNomeUrl(String nomeUrl) {
 		this.nomeUrl = nomeUrl.replaceAll(" ", "-").replaceAll("[ãâàáä]", "a").replaceAll("[êèéë]", "e")
 				.replaceAll("[îìíï]", "i").replaceAll("[õôòóö]", "o").replaceAll("[ûúùü]", "u")
@@ -83,101 +63,4 @@ public class Society {
 				.replaceAll("[ÕÔÒÓÖ]", "O").replaceAll("[ÛÙÚÜ]", "U").replace('ç', 'c').replace('Ç', 'C')
 				.replace('ñ', 'n').replace('Ñ', 'N').toLowerCase();
 	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Double getValorHora() {
-		return valorHora;
-	}
-
-	public void setValorHora(Double valorHora) {
-		this.valorHora = valorHora;
-	}
-
-	public String getNomeResponsavel() {
-		return nomeResponsavel;
-	}
-
-	public void setNomeResponsavel(String nomeResponsavel) {
-		this.nomeResponsavel = nomeResponsavel;
-	}
-
-	public Long getCelular() {
-		return celular;
-	}
-
-	public void setCelular(Long celular) {
-		this.celular = celular;
-	}
-
-	public Long getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Long telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public Integer getCep() {
-		return cep;
-	}
-
-	public void setCep(Integer cep) {
-		this.cep = cep;
-	}
-
-	public String getObservacao() {
-		return observacao;
-	}
-
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
-
-	public String getUrlFoto() {
-		return urlFoto;
-	}
-
-	public void setUrlFoto(String urlFoto) {
-		this.urlFoto = urlFoto;
-	}
-
-	public Long getQuantidadeJogos() {
-		return quantidadeJogos;
-	}
-
-	public void setQuantidadeJogos(Long quantidadeJogos) {
-		this.quantidadeJogos = quantidadeJogos;
-	}
-
-	public Integer getQuantidadeCampos() {
-		return quantidadeCampos;
-	}
-
-	public void setQuantidadeCampos(Integer quantidadeCampos) {
-		this.quantidadeCampos = quantidadeCampos;
-	}
-
-	public StatusSociety getStatusSociety() {
-		return statusSociety;
-	}
-
-	public void setStatusSociety(StatusSociety statusSociety) {
-		this.statusSociety = statusSociety;
-	}
-
 }

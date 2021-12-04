@@ -1,16 +1,20 @@
 package com.society.infrastructure.repositories.agendamento;
 
 import com.society.infrastructure.repositories.society.Society;
-import com.society.usecases.enums.StatusAgendamento;
+import com.society.usecases.agendamento.StatusAgendamento;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
 @Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Agendamento {
 
 	@Id

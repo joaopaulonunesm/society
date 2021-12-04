@@ -1,27 +1,24 @@
-package com.society.usecases.services;
+package com.society.usecases.agendamento;
 
 import com.society.infrastructure.repositories.agendamento.Agendamento;
 import com.society.infrastructure.repositories.agendamento.AgendamentoRepository;
 import com.society.infrastructure.repositories.society.Society;
-import com.society.usecases.enums.StatusAgendamento;
 import com.society.usecases.exceptions.UseCaseException;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.society.usecases.society.SocietyUseCase;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AgendamentoUseCase {
 
-	@Autowired
-	private AgendamentoRepository agendamentoRepository;
-	
-	@Autowired
-	private SocietyUseCase societyUseCase;
+	private final AgendamentoRepository agendamentoRepository;
+	private final SocietyUseCase societyUseCase;
 	
 	public Agendamento criar(Agendamento agendamento) throws UseCaseException {
 

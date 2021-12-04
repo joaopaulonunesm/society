@@ -1,4 +1,4 @@
-package com.society.usecases.enums;
+package com.society.usecases.agendamento;
 
 public enum StatusAgendamento {
 
@@ -15,7 +15,5 @@ public enum StatusAgendamento {
 		} else {
 			return null;
 		}
-		
 	}
-	
 }

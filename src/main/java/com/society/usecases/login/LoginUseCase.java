@@ -1,26 +1,24 @@
-package com.society.usecases.services;
+package com.society.usecases.login;
 
-import java.util.Date;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.society.infrastructure.repositories.login.Login;
+import com.society.infrastructure.repositories.login.LoginRepository;
+import com.society.usecases.exceptions.UseCaseException;
+import com.society.usecases.login.vo.LoginRequestVO;
+import com.society.usecases.login.vo.LoginResponseVO;
+import com.society.usecases.login.vo.TrocarSenhaVO;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.society.usecases.exceptions.UseCaseException;
-import com.society.infrastructure.repositories.login.Login;
-import com.society.usecases.models.LoginResponseVO;
-import com.society.usecases.models.LoginRequestVO;
-import com.society.usecases.models.TrocarSenhaVO;
-import com.society.infrastructure.repositories.login.LoginRepository;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
 public class LoginUseCase {
 
-	@Autowired
-	private LoginRepository loginRepository;
+	private final LoginRepository loginRepository;
 
 	public Login buscarPorToken(String token) throws UseCaseException {
 		Login login = loginRepository.findByToken(token.substring(7));

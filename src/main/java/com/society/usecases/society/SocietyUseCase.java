@@ -1,25 +1,23 @@
-package com.society.usecases.services;
+package com.society.usecases.society;
+
+import com.society.infrastructure.repositories.society.Society;
+import com.society.infrastructure.repositories.society.SocietyRepository;
+import com.society.usecases.exceptions.UseCaseException;
+import com.society.usecases.login.LoginUseCase;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-
-import com.society.usecases.enums.StatusSociety;
-import com.society.usecases.exceptions.UseCaseException;
-import com.society.infrastructure.repositories.society.Society;
-import com.society.infrastructure.repositories.society.SocietyRepository;
-
 @Service
+@RequiredArgsConstructor
 public class SocietyUseCase {
 
-	@Autowired
-	private SocietyRepository societyRepository;
+	private final SocietyRepository societyRepository;
 	
-	@Autowired
-	private LoginUseCase loginUseCase;
+	private final LoginUseCase loginUseCase;
 
 	public Society criar(Society society) {
 		
