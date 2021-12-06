@@ -1,4 +1,4 @@
-package com.society.apis.backend.middleware;
+package com.society.apis.middleware;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

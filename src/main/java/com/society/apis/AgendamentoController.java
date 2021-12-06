@@ -1,6 +1,6 @@
-package com.society.apis.backend;
+package com.society.apis;
 
-import com.society.apis.backend.middleware.ResponseApiVO;
+import com.society.apis.middleware.ResponseApiVO;
 import com.society.infrastructure.repositories.agendamento.Agendamento;
 import com.society.usecases.agendamento.AgendamentoUseCase;
 import com.society.usecases.agendamento.StatusAgendamento;

@@ -1,6 +1,6 @@
-package com.society.apis.backend;
+package com.society.apis;
 
-import com.society.apis.backend.middleware.ResponseApiVO;
+import com.society.apis.middleware.ResponseApiVO;
 import com.society.usecases.society.StatusSociety;
 import com.society.infrastructure.repositories.society.Society;
 import com.society.usecases.society.SocietyUseCase;

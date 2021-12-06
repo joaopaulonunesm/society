@@ -1,4 +1,4 @@
-package com.society.apis.backend.middleware;
+package com.society.apis.middleware;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

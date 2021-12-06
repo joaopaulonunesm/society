@@ -1,12 +1,11 @@
-package com.society.apis.backend;
+package com.society.apis;
 
-import com.society.apis.backend.middleware.ResponseApiVO;
+import com.society.apis.middleware.ResponseApiVO;
 import com.society.usecases.login.vo.LoginRequestVO;
 import com.society.usecases.login.vo.LoginResponseVO;
 import com.society.usecases.login.vo.TrocarSenhaVO;
 import com.society.usecases.login.LoginUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
