@@ -1,4 +1,4 @@
-package com.society.apis.backend;
+package com.society.apis.backend.middleware;
 
 import com.society.usecases.exceptions.UseCaseException;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.List;
 import java.util.Locale;
 
 @ControllerAdvice
@@ -17,16 +18,19 @@ public class ExceptionHandlerController {
     private final MessageSource messageSource;
 
     @ExceptionHandler(value = UseCaseException.class)
-    protected ResponseEntity<ResponseApiVO> handleBusinessException(final UseCaseException ex) {
+    protected ResponseEntity<ResponseApiVO<List>> handleBusinessException(final UseCaseException ex) {
+
+        ErrorResponse erro = new ErrorResponse(ex.getCodigo(), messageSource.getMessage(ex.getCodigo(), ex.getParametros(), Locale.getDefault()));
+
         return ResponseEntity.badRequest()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ResponseApiVO().withError(messageSource.getMessage(ex.getCodigo(), ex.getParametros(), Locale.getDefault())));
+                .body(new ResponseApiVO(List.of(erro)));
     }
 
     @ExceptionHandler(value = Exception.class)
-    protected ResponseEntity<ResponseApiVO> handleException(final Exception ex) {
+    protected ResponseEntity<ResponseApiVO<List>> handleException(final Exception ex) {
         return ResponseEntity.badRequest()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ResponseApiVO().withError(ex.getMessage()));
+                .body(new ResponseApiVO(List.of(ex.getMessage())));
     }
 }

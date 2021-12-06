@@ -1,6 +1,8 @@
 package com.society.apis.backend;
 
+import com.society.apis.backend.middleware.ResponseApiVO;
 import com.society.usecases.login.vo.LoginRequestVO;
+import com.society.usecases.login.vo.LoginResponseVO;
 import com.society.usecases.login.vo.TrocarSenhaVO;
 import com.society.usecases.login.LoginUseCase;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +19,14 @@ public class LoginController {
     private final LoginUseCase loginUseCase;
 
     @PostMapping
-    public ResponseEntity<ResponseApiVO> logar(@RequestBody LoginRequestVO login) {
-        return new ResponseEntity<>(new ResponseApiVO().withData(loginUseCase.logar(login)), HttpStatus.OK);
+    public ResponseEntity<ResponseApiVO<LoginResponseVO>> logar(@RequestBody LoginRequestVO login) {
+        return ResponseEntity.ok(new ResponseApiVO(loginUseCase.logar(login)));
     }
 
     @PutMapping
-    public ResponseEntity<ResponseApiVO> trocarSenha(@RequestBody TrocarSenhaVO trocarSenhaVO, @RequestHeader(value = "Authorization") String token) {
+    public ResponseEntity<Void> trocarSenha(@RequestBody TrocarSenhaVO trocarSenhaVO, @RequestHeader(value = "Authorization") String token) {
         loginUseCase.trocarSenha(token, trocarSenhaVO);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.noContent().build();
     }
 
 }
