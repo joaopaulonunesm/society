@@ -2,7 +2,7 @@ package com.society.gerenciamento.application.mapper;
 
 import com.society.gerenciamento.application.dto.SocietyRequest;
 import com.society.gerenciamento.application.dto.SocietyResponse;
-import com.society.gerenciamento.domain.entities.Society;
+import com.society.gerenciamento.domain.models.Society;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,10 +22,8 @@ public class SocietyMapper {
                 .quantidadeCampos(societyRequest.getQuantidadeCampos())
                 .cep(societyRequest.getCep())
                 .urlFoto(societyRequest.getUrlFoto())
+                .email(societyRequest.getEmail())
                 .build();
-
-        society.defineNomeUrl();
-
         return society;
     }
 
@@ -45,6 +43,7 @@ public class SocietyMapper {
                 .cep(society.getCep())
                 .urlFoto(society.getUrlFoto())
                 .nomeUrl(society.getNomeUrl())
+                .email(society.getEmail())
                 .build();
     }
 

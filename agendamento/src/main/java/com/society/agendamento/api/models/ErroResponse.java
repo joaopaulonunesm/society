@@ -1,4 +1,4 @@
-package com.society.agendamento.api.middlewares;
+package com.society.agendamento.api.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -11,13 +11,13 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 @NoArgsConstructor
 @Getter
 @JsonInclude(NON_NULL)
-public class ErrorResponse {
+public class ErroResponse {
 
     private String codigo;
     private String campo;
     private String mensagem;
 
-    public ErrorResponse(String codigo, String mensagem){
+    public ErroResponse(String codigo, String mensagem){
         this.codigo = codigo;
         this.mensagem = mensagem;
     }

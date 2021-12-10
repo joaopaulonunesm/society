@@ -1,21 +1,19 @@
-package com.society.agendamento.domain.entidades;
+package com.society.agendamento.domain.models;
 
 import com.society.agendamento.domain.enums.StatusAgendamento;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Getter
 @Builder
 public class Agendamento {
 
     private Long id;
-    private Society society;
+    private Long idSociety;
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
     private StatusAgendamento status;
@@ -27,6 +25,10 @@ public class Agendamento {
 
     public void definirId(Long id) {
         this.id = id;
+    }
+
+    public void definirIdSociety(Long idSociety) {
+        this.idSociety = idSociety;
     }
 
     public void definirDataInicio(LocalDateTime dataInicio) {

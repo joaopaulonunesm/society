@@ -1,8 +1,6 @@
 package com.society.agendamento.application.mapper;
 
-import com.society.agendamento.domain.entidades.Agendamento;
-import com.society.agendamento.domain.entidades.Society;
-import com.society.agendamento.domain.enums.StatusAgendamento;
+import com.society.agendamento.domain.models.Agendamento;
 import com.society.agendamento.application.dto.CriaAgendamentoRequest;
 import com.society.agendamento.application.dto.AgendamentoResponse;
 
@@ -11,16 +9,9 @@ import java.util.stream.Collectors;
 
 public class AgendamentoMapper {
 
-    public static AgendamentoResponse agendamentoParaResponse(Agendamento agendamento){
-        return AgendamentoResponse.builder()
-                .id(agendamento.getId())
-                .status(agendamento.getStatus())
-                .build();
-    }
-
-    public static Agendamento requestParaAgendamento(CriaAgendamentoRequest criaAgendamentoRequest, Society society){
-        return Agendamento.builder()
-                .society(society)
+    public static Agendamento criaAgendamento(CriaAgendamentoRequest criaAgendamentoRequest){
+        Agendamento agendamento = Agendamento.builder()
+                .idSociety(criaAgendamentoRequest.getIdSociety())
                 .dataInicio(criaAgendamentoRequest.getDataInicio())
                 .dataFim(criaAgendamentoRequest.getDataInicio().plusHours(criaAgendamentoRequest.getQuantidadeHoras()))
                 .nomeResponsavel(criaAgendamentoRequest.getNomeResponsavel())
@@ -29,9 +20,28 @@ public class AgendamentoMapper {
                 .celularSecundario(criaAgendamentoRequest.getCelularSecundario())
                 .observacao(criaAgendamentoRequest.getObservacao())
                 .build();
+
+        agendamento.definirIdSociety(criaAgendamentoRequest.getIdSociety());
+        agendamento.definirStatusInicial();
+
+        return agendamento;
     }
 
-    public static List<AgendamentoResponse> listAgendamentoParaResponse(List<Agendamento> agendamentos){
-        return agendamentos.stream().map((agendamento) -> agendamentoParaResponse(agendamento)).collect(Collectors.toList());
+    public static AgendamentoResponse retornarAgendamentoResponse(Agendamento agendamento){
+        return AgendamentoResponse.builder()
+                .id(agendamento.getId())
+                .status(agendamento.getStatus())
+                .celular(agendamento.getCelular())
+                .celularSecundario(agendamento.getCelularSecundario())
+                .dataInicio(agendamento.getDataInicio())
+                .email(agendamento.getEmail())
+                .nomeResponsavel(agendamento.getNomeResponsavel())
+                .observacao(agendamento.getObservacao())
+                .dataFim(agendamento.getDataFim())
+                .build();
+    }
+
+    public static List<AgendamentoResponse> retornarListaDeAgendamentoResponse(List<Agendamento> agendamentos){
+        return agendamentos.stream().map((agendamento) -> retornarAgendamentoResponse(agendamento)).collect(Collectors.toList());
     }
 }

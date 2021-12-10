@@ -1,6 +1,6 @@
 package com.society.agendamento.infrastructure.mappers;
 
-import com.society.agendamento.domain.entidades.Agendamento;
+import com.society.agendamento.domain.models.Agendamento;
 import com.society.agendamento.infrastructure.dataproviders.repository.AgendamentoEntity;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class AgendamentoEntityMapper {
                 .email(agendamento.getEmail())
                 .celular(agendamento.getCelular())
                 .celularSecundario(agendamento.getCelularSecundario())
-                .idSociety(agendamento.getSociety().getId())
+                .idSociety(agendamento.getIdSociety())
                 .nomeResponsavel(agendamento.getNomeResponsavel())
                 .observacao(agendamento.getObservacao())
                 .status(agendamento.getStatus())
@@ -29,7 +29,7 @@ public class AgendamentoEntityMapper {
                 .collect(Collectors.toList());
     }
 
-    private static Agendamento entityParaAgendamento(AgendamentoEntity agendamentoEntity) {
+    public static Agendamento entityParaAgendamento(AgendamentoEntity agendamentoEntity) {
         return Agendamento.builder()
                 .id(agendamentoEntity.getId())
                 .dataInicio(agendamentoEntity.getDataInicio())
@@ -40,6 +40,7 @@ public class AgendamentoEntityMapper {
                 .nomeResponsavel(agendamentoEntity.getNomeResponsavel())
                 .observacao(agendamentoEntity.getObservacao())
                 .status(agendamentoEntity.getStatus())
+                .idSociety(agendamentoEntity.getIdSociety())
                 .build();
     }
 }

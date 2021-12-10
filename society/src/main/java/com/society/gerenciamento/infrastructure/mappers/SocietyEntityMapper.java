@@ -1,6 +1,6 @@
 package com.society.gerenciamento.infrastructure.mappers;
 
-import com.society.gerenciamento.domain.entities.Society;
+import com.society.gerenciamento.domain.models.Society;
 import com.society.gerenciamento.infrastructure.dataproviders.repository.SocietyEntity;
 
 import java.util.List;
@@ -24,6 +24,7 @@ public class SocietyEntityMapper {
                 .telefone(society.getTelefone())
                 .urlFoto(society.getUrlFoto())
                 .valorHora(society.getValorHora())
+                .email(society.getEmail())
                 .build();
     }
 
@@ -47,6 +48,7 @@ public class SocietyEntityMapper {
                 .telefone(societyEntity.getTelefone())
                 .urlFoto(societyEntity.getUrlFoto())
                 .valorHora(societyEntity.getValorHora())
+                .email(societyEntity.getEmail())
                 .build();
     }
 }

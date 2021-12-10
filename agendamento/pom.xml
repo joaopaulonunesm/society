@@ -11,9 +11,9 @@
 	</parent>
 
 	<groupId>com.society.gerenciamento</groupId>
-	<artifactId>agendamentoEntity</artifactId>
+	<artifactId>agendamento-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>agendamentoEntity</name>
+	<name>agendamento</name>
 	<description>Agendamento de Horario em um Society</description>
 
 	<properties>

@@ -1,6 +1,6 @@
 package com.society.agendamento.infrastructure.mappers;
 
-import com.society.agendamento.domain.entidades.Society;
+import com.society.agendamento.domain.models.Society;
 import com.society.agendamento.infrastructure.dataproviders.webservice.SocietyResponse;
 
 import java.util.Optional;
@@ -15,6 +15,7 @@ public class SocietyResponseMapper {
         Society society = Society.builder()
                 .id(societyResponse.get().getId())
                 .quantidadeCampos(societyResponse.get().getQuantidadeCampos())
+                .status(societyResponse.get().getStatus())
                 .build();
 
         return Optional.of(society);

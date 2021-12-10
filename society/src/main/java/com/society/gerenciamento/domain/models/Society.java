@@ -1,11 +1,15 @@
-package com.society.gerenciamento.domain.entities;
+package com.society.gerenciamento.domain.models;
 
 import com.society.gerenciamento.domain.enums.StatusSociety;
+import com.society.gerenciamento.domain.exceptions.DomainException;
+import com.society.gerenciamento.domain.exceptions.DomainMensagem;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
+@ToString
 @Builder
 @Getter
 public class Society {
@@ -19,6 +23,7 @@ public class Society {
     private String nomeResponsavel;
     private String celular;
     private String telefone;
+    private String email;
     private String endereco;
     private String cep;
     private String observacao;
@@ -29,13 +34,13 @@ public class Society {
         this.id = id;
     }
 
-    public void defineStatus(StatusSociety status) {
-        this.status = status;
+    public void criar() {
+        this.status = StatusSociety.ATIVO;
+        defineNomeUrl();
     }
 
-    public void atualizarDados(Society society) {
+    public void atualizar(Society society) {
         this.nome = society.getNome();
-        this.nomeUrl = society.getNomeUrl();
         this.descricao = society.getDescricao();
         this.valorHora = society.getValorHora();
         this.nomeResponsavel = society.getNomeResponsavel();
@@ -46,9 +51,27 @@ public class Society {
         this.observacao = society.getObservacao();
         this.urlFoto = society.getUrlFoto();
         this.quantidadeCampos = society.getQuantidadeCampos();
+
+        defineNomeUrl();
     }
 
-    public void defineNomeUrl() {
+    public void inativar() {
+        if (this.status.equals(StatusSociety.INATIVO)) {
+            throw new DomainException(DomainMensagem.SITUACAO_SOCIETY_ATUAL);
+        }
+
+        this.status = StatusSociety.INATIVO;
+    }
+
+    public void ativar() {
+        if (this.status.equals(StatusSociety.ATIVO)) {
+            throw new DomainException(DomainMensagem.SITUACAO_SOCIETY_ATUAL);
+        }
+
+        this.status = StatusSociety.ATIVO;
+    }
+
+    private void defineNomeUrl() {
         this.nomeUrl = this.nome.replaceAll(" ", "-").replaceAll("[ãâàáä]", "a").replaceAll("[êèéë]", "e")
                 .replaceAll("[îìíï]", "i").replaceAll("[õôòóö]", "o").replaceAll("[ûúùü]", "u")
                 .replaceAll("[ÃÂÀÁÄ]", "A").replaceAll("[ÊÈÉË]", "E").replaceAll("[ÎÌÍÏ]", "I")

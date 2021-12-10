@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum UseCaseMensagem {
 
-    SOCIETY_NAO_CADASTRADO("society.error.society-nao-cadastrado");
+    SOCIETY_NAO_CADASTRADO("society.error.society-nao-cadastrado"),
+    SOCIETY_JA_EXISTENTE("society.error.society-ja-existente");
 
     private String codigo;
 }

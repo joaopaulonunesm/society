@@ -1,6 +1,6 @@
-package com.society.agendamento.domain.gateway;
+package com.society.agendamento.domain.gateways;
 
-import com.society.agendamento.domain.entidades.Agendamento;
+import com.society.agendamento.domain.models.Agendamento;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,15 +8,9 @@ import java.util.Optional;
 
 public interface AgendamentoGateway {
 
-    Agendamento criar(Agendamento agendamento);
-
-    Agendamento alterar(Agendamento agendamento);
+    Agendamento salvar(Agendamento agendamento);
 
     Optional<Agendamento> buscarPorId(Long id);
-
-    Agendamento confirmar(Agendamento agendamento);
-
-    Agendamento cancelar(Agendamento agendamento);
 
     List<Agendamento> agendamentosDoSocietyPorHorario(LocalDateTime dataInicio, LocalDateTime dataFim, Long idSociety);
 

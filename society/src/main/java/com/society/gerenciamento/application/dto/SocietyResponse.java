@@ -3,11 +3,13 @@ package com.society.gerenciamento.application.dto;
 import com.society.gerenciamento.domain.enums.StatusSociety;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Getter
 @Builder
+@ToString
 public class SocietyResponse {
 
     private Long id;
@@ -19,6 +21,7 @@ public class SocietyResponse {
     private String nomeResponsavel;
     private String celular;
     private String telefone;
+    private String email;
     private String endereco;
     private String cep;
     private String observacao;

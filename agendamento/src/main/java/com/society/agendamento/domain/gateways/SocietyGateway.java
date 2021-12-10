@@ -1,6 +1,6 @@
-package com.society.agendamento.domain.gateway;
+package com.society.agendamento.domain.gateways;
 
-import com.society.agendamento.domain.entidades.Society;
+import com.society.agendamento.domain.models.Society;
 
 import java.util.Optional;
 

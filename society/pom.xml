@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.society.gerenciamento</groupId>
-	<artifactId>society</artifactId>
+	<artifactId>society-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>society</name>
 	<description>Gerenciamento das informações do Society</description>

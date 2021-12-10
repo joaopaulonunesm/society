@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @Builder
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class SocietyEntity {
@@ -26,6 +27,7 @@ public class SocietyEntity {
 	private String nomeResponsavel;
 	private String celular;
 	private String telefone;
+	private String email;
 	private String endereco;
 	private String cep;
 	private String observacao;
